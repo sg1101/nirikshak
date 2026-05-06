@@ -73,9 +73,9 @@ class ExperienceDisjunctiveRule(BaseRule):
     def _evaluate_simple(self, criterion: Criterion, evidence: list[EvidenceClaim]) -> Verdict:
         """Simple: at least N similar works of value >= V in last W years."""
         params = criterion.parameters
-        min_count = params.get("min_count", 1)
+        min_count = params.get("min_count") or 1  # default 1 if None/null/0
         min_value = Decimal(str(params.get("min_value", 0))) if params.get("min_value") else None
-        window_years = params.get("window_years", 5)
+        window_years = params.get("window_years") or 7  # default 7 if None
 
         claims = _parse_claims(evidence)
         if not claims:

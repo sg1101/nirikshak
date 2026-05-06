@@ -229,19 +229,52 @@ async def add_criteria_to_spec(
 
     added = []
 
+    # Get tender for estimated_value (needed for percentage-based thresholds)
+    tender_result = await session.execute(select(Tender).where(Tender.id == spec.tender_id))
+    tender = tender_result.scalar_one_or_none()
+    estimated_cost = float(tender.estimated_value) if tender else 5095112
+
     if "FIN-001" not in existing_ids:
+        # Actual tender: "annual average turnover...at least 30% of estimated cost"
+        threshold = estimated_cost * 0.30
         fin = Criterion(
             id="FIN-001",
             criteria_spec_id=spec_id,
             type=CriterionType.financial_threshold,
-            description="Average annual turnover of not less than Rs. 5 Crore in the last 3 financial years",
+            description=f"Annual average turnover during the last 3 financial years shall be at least 30% of the estimated cost (INR {threshold:,.0f})",
             mandatory=True,
-            parameters={"threshold_amount": 50000000, "currency": "INR", "period_years": 3, "metric": "turnover"},
-            source_page=0,
-            source_quote="The bidder shall have an average annual turnover of not less than Rs. 5 Crore (Rupees Five Crore) during the last three financial years ending 31st March.",
+            parameters={"threshold_amount": threshold, "currency": "INR", "period_years": 3, "metric": "turnover"},
+            source_page=7,
+            source_quote="Bidder should have annual average turnover during the last three years, ending 31st March of the previous financial year, should be at least 30% of the estimated cost.",
         )
         session.add(fin)
         added.append("FIN-001")
+
+    if "EXP-002" not in existing_ids:
+        # Actual tender: disjunctive experience — 1@80% OR 2@60% OR 3@40% of estimated cost, last 7 years
+        bid_date = str(tender.bid_submission_date) if tender else "2025-04-30"
+        exp_disj = Criterion(
+            id="EXP-002",
+            criteria_spec_id=spec_id,
+            type=CriterionType.experience_count,
+            description="Similar completed works: One at 80% OR Two at 60% OR Three at 40% of estimated cost, in last 7 financial years",
+            mandatory=True,
+            parameters={
+                "disjunctive": True,
+                "branches": [
+                    {"count": 1, "percentage": 80},
+                    {"count": 2, "percentage": 60},
+                    {"count": 3, "percentage": 40},
+                ],
+                "window_years": 7,
+                "estimated_cost": str(estimated_cost),
+                "bid_submission_date": bid_date,
+            },
+            source_page=7,
+            source_quote="One similar completed work each costing not less than 80% of the estimated cost; or Two similar completed works each costing not less than 60%; or Three similar completed works each costing not less than 40% of the estimated cost put to tender.",
+        )
+        session.add(exp_disj)
+        added.append("EXP-002")
 
     if "QUA-001" not in existing_ids:
         qua = Criterion(
@@ -249,10 +282,10 @@ async def add_criteria_to_spec(
             criteria_spec_id=spec_id,
             type=CriterionType.quality_certification,
             description="Valid ISO 9001 certification (version 2008 or 2015)",
-            mandatory=True,
+            mandatory=False,  # not explicitly required in this tender
             parameters={"cert_name": "ISO 9001", "accepted_versions": ["2008", "2015"], "scope": None},
             source_page=0,
-            source_quote="The bidder shall possess a valid ISO 9001 Quality Management System certification from an accredited body.",
+            source_quote="Quality certification if applicable.",
         )
         session.add(qua)
         added.append("QUA-001")
