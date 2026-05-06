@@ -1,0 +1,50 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: nirikshak
+      POSTGRES_PASSWORD: nirikshak
+      POSTGRES_DB: nirikshak
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nirikshak"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  app:
+    build: .
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://nirikshak:nirikshak@db:5432/nirikshak
+      DATABASE_URL_SYNC: postgresql://nirikshak:nirikshak@db:5432/nirikshak
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./storage:/app/storage
+      - ./nirikshak:/app/nirikshak
+    depends_on:
+      db:
+        condition: service_healthy
+
+  console:
+    build: .
+    command: streamlit run nirikshak/console/streamlit_app.py --server.port 8501 --server.address 0.0.0.0
+    env_file: .env
+    environment:
+      API_BASE_URL: http://app:8000
+      DATABASE_URL: postgresql+asyncpg://nirikshak:nirikshak@db:5432/nirikshak
+      DATABASE_URL_SYNC: postgresql://nirikshak:nirikshak@db:5432/nirikshak
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./storage:/app/storage
+      - ./nirikshak:/app/nirikshak
+    depends_on:
+      - app
+
+volumes:
+  pgdata:

@@ -1,0 +1,46 @@
+# Tender config — the construction tender from the AI for Bharat 2026 Theme 3 problem statement
+# Used by all bidder configs.
+
+title: "Construction of Operational Vehicle Parking Bay and Allied Civil Works"
+short_code: "OVP-BLR"
+tender_number: "CRPF/PROC/2025-26/CIVIL/0042"
+procuring_authority: "Central Reserve Police Force, Group Centre Bangalore"
+procuring_authority_short: "CRPF Group Centre Bangalore"
+authority_address: "Group Centre, CRPF, Yelahanka, Bangalore — 560064, Karnataka"
+authority_designation_short: "Commandant"
+designation_for_bg: "Commandant, CRPF Group Centre Bangalore"
+
+publication_date: "2025-03-15"
+publication_date_long: "15 March 2025"
+bid_submission_deadline: "2025-04-30"
+bid_validity_days: 180
+
+estimated_value: 50000000      # ₹5 crore
+estimated_value_words: "Rupees Five Crore"
+
+# Earnest Money Deposit (typically 2% of estimated value for civil works)
+emd_amount: 1000000            # ₹10 lakh
+
+# Eligibility criteria — from the problem statement
+eligibility_criteria:
+  - id: "FIN-001"
+    type: "FinancialThreshold"
+    description: "Minimum average annual turnover of ₹5 Crore in the last 3 financial years"
+    mandatory: true
+    threshold: 50000000
+    window_years: 3
+  - id: "EXP-001"
+    type: "ExperienceCount"
+    description: "At least 3 similar projects completed in the last 5 years"
+    mandatory: true
+    minimum_count: 3
+    window_years: 5
+  - id: "REG-001"
+    type: "StatutoryRegistration"
+    description: "Valid GST Registration"
+    mandatory: true
+  - id: "QUA-001"
+    type: "QualityCertification"
+    description: "ISO 9001 Certification (any version, 2008 or 2015)"
+    mandatory: true
+    accepted_versions: ["2008", "2015"]

@@ -1,0 +1,47 @@
+tender: "Construction of Vehicle Parking - CRPF Zone Bangalore"
+
+bidders:
+  - name: "Arun Builders Pvt Ltd"
+    expected_verdict: eligible
+    criteria:
+      DOC-001: eligible
+      DOC-002: eligible
+      DOC-003: eligible
+      REG-001: eligible
+      EXP-001: eligible
+
+  - name: "Sharma Infrastructure Ltd"
+    expected_verdict: eligible
+    criteria:
+      DOC-001: eligible
+      DOC-002: eligible
+      DOC-003: eligible
+      REG-001: eligible
+      EXP-001: eligible
+
+  - name: "Metro Construction Co"
+    expected_verdict: not_eligible
+    criteria:
+      DOC-001: not_eligible  # missing EMD
+      DOC-002: not_eligible  # missing acceptance letter
+      DOC-003: not_eligible  # missing signatory details
+      REG-001: eligible
+      EXP-001: needs_review  # only 1 experience cert
+
+  - name: "Lakshmi Enterprises"
+    expected_verdict: not_eligible
+    criteria:
+      DOC-001: eligible
+      DOC-002: eligible
+      DOC-003: eligible
+      REG-001: not_eligible  # expired GST
+      EXP-001: needs_review
+
+  - name: "National Projects India Ltd"
+    expected_verdict: needs_review
+    criteria:
+      DOC-001: eligible
+      DOC-002: eligible
+      DOC-003: eligible
+      REG-001: eligible
+      EXP-001: needs_review  # borderline experience (prefab vs construction)
