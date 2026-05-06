@@ -205,6 +205,64 @@ async def get_tender_criteria(tender_id: UUID, session: AsyncSession = Depends(g
     }
 
 
+# ── Add Criteria to Spec ───────────────────────────────────────────────
+
+
+@app.post("/api/criteria-specs/{spec_id}/add-criteria")
+async def add_criteria_to_spec(
+    spec_id: UUID,
+    session: AsyncSession = Depends(get_session),
+):
+    """Add seed criteria (FIN-001, QUA-001) to an existing spec. For demo setup."""
+    from nirikshak.core.schemas import CriterionType
+
+    result = await session.execute(select(CriteriaSpec).where(CriteriaSpec.id == spec_id))
+    spec = result.scalar_one_or_none()
+    if not spec:
+        raise HTTPException(status_code=404, detail="Spec not found")
+    if spec.locked_at is not None:
+        raise HTTPException(status_code=400, detail="Spec is locked, cannot add criteria")
+
+    # Check which criteria already exist
+    existing = await session.execute(select(Criterion).where(Criterion.criteria_spec_id == spec_id))
+    existing_ids = {c.id for c in existing.scalars().all()}
+
+    added = []
+
+    if "FIN-001" not in existing_ids:
+        fin = Criterion(
+            id="FIN-001",
+            criteria_spec_id=spec_id,
+            type=CriterionType.financial_threshold,
+            description="Average annual turnover of not less than Rs. 5 Crore in the last 3 financial years",
+            mandatory=True,
+            parameters={"threshold_amount": 50000000, "currency": "INR", "period_years": 3, "metric": "turnover"},
+            source_page=0,
+            source_quote="The bidder shall have an average annual turnover of not less than Rs. 5 Crore (Rupees Five Crore) during the last three financial years ending 31st March.",
+        )
+        session.add(fin)
+        added.append("FIN-001")
+
+    if "QUA-001" not in existing_ids:
+        qua = Criterion(
+            id="QUA-001",
+            criteria_spec_id=spec_id,
+            type=CriterionType.quality_certification,
+            description="Valid ISO 9001 certification (version 2008 or 2015)",
+            mandatory=True,
+            parameters={"cert_name": "ISO 9001", "accepted_versions": ["2008", "2015"], "scope": None},
+            source_page=0,
+            source_quote="The bidder shall possess a valid ISO 9001 Quality Management System certification from an accredited body.",
+        )
+        session.add(qua)
+        added.append("QUA-001")
+
+    await session.flush()
+    await session.commit()
+
+    return {"spec_id": str(spec_id), "added_criteria": added}
+
+
 # ── Lock Criteria Spec ────────────────────────────────────────────────
 
 

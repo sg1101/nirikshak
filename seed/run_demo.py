@@ -55,6 +55,19 @@ def upload_tender():
     print(f"  Tender uploaded: {tender_id}")
     print(f"  Criteria extracted: {criteria_count}")
 
+    # Inject FIN-001 + QUA-001 (not always extracted by LLM from tender PDF)
+    if spec:
+        r = httpx.post(
+            f"{API}/api/criteria-specs/{spec['id']}/add-criteria",
+            timeout=30,
+        )
+        r.raise_for_status()
+        added = r.json().get("added_criteria", [])
+        if added:
+            print(f"  Injected seed criteria: {added}")
+        criteria_count += len(added)
+        print(f"  Total criteria: {criteria_count}")
+
     # Lock the spec
     if spec:
         r = httpx.post(

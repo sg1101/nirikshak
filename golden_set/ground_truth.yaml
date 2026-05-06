@@ -1,12 +1,49 @@
+# Ground truth for demo evaluation
+# Matches bidder names from seed/demo_output/ (Playwright-tested demo data)
+# Criteria: DOC-001, DOC-002, REG-001, EXP-001 (LLM-extracted) + FIN-001, QUA-001 (seeded)
+
 tender: "Construction of Vehicle Parking - CRPF Zone Bangalore"
 
 bidders:
+  # Bidder 01 — eligible reference bidder (avg turnover 6.62 Cr > 5 Cr)
+  - name: "ABC Constructions Pvt Ltd (Bidder 01)"
+    expected_verdict: eligible
+    criteria:
+      DOC-001: eligible
+      DOC-002: eligible
+      REG-001: eligible
+      EXP-001: eligible
+      FIN-001: eligible       # avg turnover 6.62 Cr > 5 Cr threshold
+      QUA-001: eligible       # ISO 9001:2015, valid until Aug 2027
+
+  # Bidder 02 — NOT eligible due to low turnover (2.82 Cr < 5 Cr)
+  - name: "Devi Constructions Pvt Ltd (Bidder 02)"
+    expected_verdict: not_eligible
+    criteria:
+      DOC-001: eligible
+      DOC-002: eligible
+      REG-001: eligible
+      EXP-001: eligible
+      FIN-001: not_eligible   # avg turnover 2.82 Cr < 5 Cr threshold
+      QUA-001: eligible       # ISO 9001:2015, valid until Feb 2027
+
+  # Bidder K — eligible via disjunctive experience rule
+  - name: "Karnataka Infra & Eng Ltd (Bidder K)"
+    expected_verdict: eligible
+    criteria:
+      DOC-001: eligible
+      DOC-002: eligible
+      REG-001: eligible
+      EXP-001: eligible       # 5 completion certs, all similar
+      FIN-001: eligible       # avg turnover > 40 Cr >> 5 Cr threshold
+      QUA-001: eligible       # ISO 9001:2015
+
+  # Simple seed bidders (from generate_demo_data.py)
   - name: "Arun Builders Pvt Ltd"
     expected_verdict: eligible
     criteria:
       DOC-001: eligible
       DOC-002: eligible
-      DOC-003: eligible
       REG-001: eligible
       EXP-001: eligible
 
@@ -15,33 +52,27 @@ bidders:
     criteria:
       DOC-001: eligible
       DOC-002: eligible
-      DOC-003: eligible
       REG-001: eligible
       EXP-001: eligible
 
   - name: "Metro Construction Co"
     expected_verdict: not_eligible
     criteria:
-      DOC-001: not_eligible  # missing EMD
-      DOC-002: not_eligible  # missing acceptance letter
-      DOC-003: not_eligible  # missing signatory details
+      DOC-001: not_eligible   # missing EMD
+      DOC-002: not_eligible   # missing acceptance letter
       REG-001: eligible
-      EXP-001: needs_review  # only 1 experience cert
 
   - name: "Lakshmi Enterprises"
     expected_verdict: not_eligible
     criteria:
       DOC-001: eligible
       DOC-002: eligible
-      DOC-003: eligible
-      REG-001: not_eligible  # expired GST
-      EXP-001: needs_review
+      REG-001: not_eligible   # expired GST
 
   - name: "National Projects India Ltd"
     expected_verdict: needs_review
     criteria:
       DOC-001: eligible
       DOC-002: eligible
-      DOC-003: eligible
       REG-001: eligible
-      EXP-001: needs_review  # borderline experience (prefab vs construction)
+      EXP-001: needs_review   # borderline experience
