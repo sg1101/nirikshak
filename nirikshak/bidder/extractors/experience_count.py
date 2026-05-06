@@ -71,28 +71,46 @@ class ExperienceCountExtractor(BaseExtractor):
             system="You are an experience certificate analyst for government tenders. Return JSON only.",
         )
 
-        # Get tender scope for similarity classification
+        # Build page→doc mapping so we can assign correct source_doc_id per claim
+        page_to_doc = {}
+        for doc in docs:
+            for p in pages_by_doc.get(doc.id, []):
+                page_to_doc[p.page_number] = doc.id
+        default_doc_id = docs[0].id if docs else documents[0].id
+
         tender_scope = criterion.description
         claims = []
-        doc_id = docs[0].id if docs else documents[0].id
 
         for wc in result.claims:
+            # Map source_page to the correct document
+            doc_id = page_to_doc.get(wc.source_page, default_doc_id)
             # Classify similarity
             similarity = "unknown"
             if criterion.parameters.get("similarity_required", True) and wc.work_description:
                 similarity = _classify_similarity(tender_scope, wc.work_description)
 
-            # Parse completion date
+            # Parse completion date — try multiple formats
             comp_date = None
-            if wc.completion_date:
-                try:
-                    comp_date = date.fromisoformat(wc.completion_date)
-                except ValueError:
-                    comp_date = None
+            if wc.completion_date and wc.completion_date != "null":
+                for fmt in ("%Y-%m-%d", "%d-%m-%Y", "%d/%m/%Y", "%d.%m.%Y", "%Y-%m-%dT%H:%M:%S"):
+                    try:
+                        from datetime import datetime as dt
+                        comp_date = dt.strptime(wc.completion_date, fmt).date()
+                        break
+                    except ValueError:
+                        continue
+                if comp_date is None:
+                    # Try partial: "March 2023", "2023", "2022-23"
+                    import re
+                    if re.match(r"^\d{4}$", wc.completion_date):
+                        comp_date = date(int(wc.completion_date), 6, 30)
+                    elif re.match(r"^\d{4}-\d{2}$", wc.completion_date):
+                        # fiscal year like "2022-23"
+                        comp_date = date(2000 + int(wc.completion_date[-2:]), 3, 31)
 
             claim_data = CompletedWorkClaim(
                 value=wc.contract_value or Decimal("0"),
-                completion_date=comp_date or date(1900, 1, 1),
+                completion_date=comp_date or date.today(),  # default to today, not 1900
                 description=wc.work_description,
                 similarity_status=similarity,
                 source_doc_id=doc_id,

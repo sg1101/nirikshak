@@ -4,10 +4,12 @@ import streamlit as st
 from sqlmodel import select
 
 from nirikshak.console.helpers import (
-    api_post, format_inr, get_sync_session,
+    api_post, format_inr, get_sync_session, render_sidebar,
 )
 from nirikshak.core.schemas import Tender, CriteriaSpec, Criterion
 
+
+render_sidebar()
 st.header("📚 Tender Library")
 
 # ── Upload section ────────────────────────────────────────────────────

@@ -1,8 +1,10 @@
 """Eval Dashboard — Three-layer accuracy and system metrics."""
 
 import streamlit as st
-from nirikshak.console.helpers import api_get, verdict_emoji, verdict_label
+from nirikshak.console.helpers import api_get, verdict_emoji, verdict_label, render_sidebar
 
+
+render_sidebar()
 st.header("📈 Evaluation Dashboard")
 
 try:

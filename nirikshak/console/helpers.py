@@ -4,9 +4,10 @@ from decimal import Decimal
 from functools import lru_cache
 
 import httpx
+import streamlit as st
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from sqlmodel import SQLModel, Session
+from sqlmodel import SQLModel, Session, select
 
 from nirikshak.core.config import get_settings
 import nirikshak.core.schemas  # noqa: ensure models registered
@@ -30,6 +31,46 @@ def get_sync_session() -> Session:
     if _sync_session_factory is None:
         _sync_session_factory = sessionmaker(get_sync_engine(), class_=Session)
     return _sync_session_factory()
+
+
+def render_sidebar():
+    """Render the shared sidebar on every page. Call this at the top of each page."""
+    from nirikshak.core.schemas import Tender
+
+    st.sidebar.title("⚖️ Nirikshak")
+    st.sidebar.caption("AI-Based Tender Evaluation")
+    st.sidebar.markdown("---")
+
+    st.sidebar.text_input("Officer Email", value="officer1@crpf.gov.in", key="officer_email_input")
+    st.sidebar.markdown("---")
+
+    try:
+        with get_sync_session() as session:
+            tenders = session.exec(select(Tender).order_by(Tender.created_at.desc())).all()
+
+        if tenders:
+            tender_options = {str(t.id): t.title for t in tenders}
+            option_keys = list(tender_options.keys())
+
+            # Preserve existing selection if valid
+            current = st.session_state.get("selected_tender_id")
+            default_idx = 0
+            if current and current in option_keys:
+                default_idx = option_keys.index(current)
+
+            selected = st.sidebar.selectbox(
+                "Active Tender",
+                options=option_keys,
+                index=default_idx,
+                format_func=lambda x: tender_options[x],
+                key="_sidebar_tender_select",
+            )
+            # Sync to session_state key used by all pages
+            st.session_state["selected_tender_id"] = selected
+        else:
+            st.sidebar.info("No tenders yet.")
+    except Exception:
+        st.sidebar.warning("Database not available.")
 
 
 def api_post(path: str, **kwargs) -> dict:

@@ -4,10 +4,12 @@ import streamlit as st
 from sqlmodel import select
 
 from nirikshak.console.helpers import (
-    api_post, criterion_type_label, get_sync_session,
+    api_post, criterion_type_label, get_sync_session, render_sidebar,
 )
 from nirikshak.core.schemas import CriteriaSpec, Criterion, Tender
 
+
+render_sidebar()
 st.header("🔍 Criteria Review (Gate 1)")
 
 tender_id = st.session_state.get("selected_tender_id")

@@ -4,10 +4,12 @@ import streamlit as st
 from sqlmodel import select
 
 from nirikshak.console.helpers import (
-    api_post, get_sync_session, verdict_emoji, verdict_label,
+    api_post, get_sync_session, render_sidebar, verdict_emoji, verdict_label,
 )
 from nirikshak.core.schemas import Bidder, BidderVerdict, Document, Tender
 
+
+render_sidebar()
 st.header("📦 Bidder Queue")
 
 tender_id = st.session_state.get("selected_tender_id")

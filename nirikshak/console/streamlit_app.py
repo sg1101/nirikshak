@@ -10,36 +10,9 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# ── Sidebar ───────────────────────────────────────────────────────────
+from nirikshak.console.helpers import render_sidebar, get_sync_session
 
-st.sidebar.title("⚖️ Nirikshak")
-st.sidebar.caption("AI-Based Tender Evaluation")
-st.sidebar.markdown("---")
-
-# Officer identity
-officer = st.sidebar.text_input("Officer Email", value="officer1@crpf.gov.in", key="officer_email")
-st.sidebar.markdown("---")
-
-# Tender selector
-try:
-    from nirikshak.console.helpers import get_sync_session
-    from nirikshak.core.schemas import Tender
-
-    with get_sync_session() as session:
-        tenders = session.exec(select(Tender).order_by(Tender.created_at.desc())).all()
-
-    if tenders:
-        tender_options = {str(t.id): f"{t.title}" for t in tenders}
-        selected = st.sidebar.selectbox(
-            "Active Tender",
-            options=list(tender_options.keys()),
-            format_func=lambda x: tender_options[x],
-            key="selected_tender_id",
-        )
-    else:
-        st.sidebar.info("No tenders yet. Upload one from the Tender Library.")
-except Exception:
-    st.sidebar.warning("Database not available. Start the API first.")
+render_sidebar()
 
 # ── Main page ─────────────────────────────────────────────────────────
 
@@ -51,7 +24,6 @@ st.markdown("---")
 col1, col2, col3 = st.columns(3)
 
 try:
-    from nirikshak.console.helpers import get_sync_session
     from nirikshak.core.schemas import Tender, Bidder, BidderVerdict
 
     with get_sync_session() as session:

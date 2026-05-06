@@ -4,9 +4,11 @@ import streamlit as st
 import pandas as pd
 from sqlmodel import select
 
-from nirikshak.console.helpers import api_get, api_post, get_sync_session, verdict_emoji, verdict_label
+from nirikshak.console.helpers import api_get, api_post, get_sync_session, verdict_emoji, verdict_label, render_sidebar
 from nirikshak.core.schemas import AuditLogEntry
 
+
+render_sidebar()
 st.header("🔗 Audit Log")
 
 # ── Chain verification ────────────────────────────────────────────────

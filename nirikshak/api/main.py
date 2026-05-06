@@ -214,7 +214,10 @@ async def lock_criteria_spec(
     officer_email: str = Form("officer1@crpf.gov.in"),
     session: AsyncSession = Depends(get_session),
 ):
-    spec = await lock_spec(session, spec_id, officer_email)
+    try:
+        spec = await lock_spec(session, spec_id, officer_email)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
     await session.commit()
     return {
         "spec_id": str(spec.id),
@@ -268,7 +271,10 @@ async def download_report(tender_id: UUID, session: AsyncSession = Depends(get_s
     from nirikshak.audit.signer import generate_report
     from fastapi.responses import Response
 
-    pdf_bytes = await generate_report(tender_id, session)
+    try:
+        pdf_bytes = await generate_report(tender_id, session)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
 
     # Audit entry
     from nirikshak.core.hashing import content_hash

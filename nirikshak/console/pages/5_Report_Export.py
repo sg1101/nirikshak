@@ -4,12 +4,14 @@ import streamlit as st
 from sqlmodel import select
 
 from nirikshak.console.helpers import (
-    format_inr, get_sync_session, verdict_emoji, verdict_label,
+    format_inr, get_sync_session, render_sidebar, verdict_emoji, verdict_label,
 )
 from nirikshak.core.schemas import (
     Bidder, BidderVerdict, CriteriaSpec, Criterion, Tender, Verdict,
 )
 
+
+render_sidebar()
 st.header("📊 Report Export")
 
 tender_id = st.session_state.get("selected_tender_id")

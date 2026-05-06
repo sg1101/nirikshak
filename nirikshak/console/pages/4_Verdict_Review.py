@@ -6,7 +6,7 @@ import streamlit as st
 from sqlmodel import select
 
 from nirikshak.console.helpers import (
-    criterion_type_label, format_inr, get_sync_session,
+    criterion_type_label, format_inr, get_sync_session, render_sidebar,
     verdict_emoji, verdict_label, verdict_color,
 )
 from nirikshak.core.schemas import (
@@ -14,6 +14,8 @@ from nirikshak.core.schemas import (
     EvidenceClaim, Tender, Verdict, VerdictState,
 )
 
+
+render_sidebar()
 st.header("⚖️ Verdict Review (Gate 2)")
 
 tender_id = st.session_state.get("selected_tender_id")
