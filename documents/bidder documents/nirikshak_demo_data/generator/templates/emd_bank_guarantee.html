@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="static/styles.css">
+<title>Bank Guarantee — EMD</title>
+</head>
+<body>
+
+<div class="letterhead-formal">
+  <h1>{{ bidder.bank_name | upper }}</h1>
+  <div class="tagline">{{ bidder.bank_branch }}</div>
+  <div class="address-line">{{ bidder.bank_address }}</div>
+  <div class="address-line">IFSC: {{ bidder.bank_ifsc }} &nbsp;|&nbsp; Tel: {{ bidder.bank_phone }}</div>
+</div>
+
+<div class="ref-line">
+  <div><b>BG No.: {{ bidder.bg_number }}</b></div>
+  <div>Date: {{ bidder.bg_date_long }}</div>
+</div>
+
+<div class="doc-title">Bank Guarantee — Earnest Money Deposit</div>
+
+<p><b>To,</b><br>
+The {{ tender.designation_for_bg }},<br>
+{{ tender.procuring_authority }},<br>
+{{ tender.authority_address }}</p>
+
+<p><b>Sub:</b> Bank Guarantee in lieu of Earnest Money Deposit for Tender No. {{ tender.tender_number }} — "{{ tender.title }}"</p>
+
+<p>Sir/Madam,</p>
+
+<p>1. In consideration of the {{ tender.procuring_authority }} (hereinafter called "the Beneficiary") having agreed to consider the bid submitted by <b>M/s {{ bidder.name }}</b>, having its registered office at {{ bidder.address }} (hereinafter called "the Bidder"), against the above-mentioned tender, we, <b>{{ bidder.bank_name }}</b>, {{ bidder.bank_branch }} (hereinafter called "the Bank"), do hereby unconditionally and irrevocably guarantee, undertake, and promise to pay to the Beneficiary, on first written demand and without any demur, contestation, protest, or recourse to the Bidder, an amount not exceeding <b>₹ {{ tender.emd_amount_formatted }}</b> ({{ tender.emd_amount_words }}), being the amount of Earnest Money Deposit required to be furnished by the Bidder.</p>
+
+<p>2. We, the Bank, do hereby agree and undertake that any claim made on us under this guarantee shall be conclusive evidence of the amount due and payable, and we shall pay the same forthwith without any demur or contestation. The Beneficiary shall not be required to prove any breach or default on the part of the Bidder before invoking this guarantee.</p>
+
+<p>3. We further agree that this guarantee shall remain in full force and effect until the bid validity period of <b>{{ tender.bid_validity_days }} days</b> from the date of bid opening, plus the additional grace period of <b>45 days</b>, i.e. until <b>{{ bidder.bg_valid_until }}</b>, after which all rights of the Beneficiary under this guarantee shall stand extinguished, except for claims duly made and intimated to us in writing on or before the said date.</p>
+
+<p>4. This guarantee shall not be discharged or affected by any change in the constitution of the Bank or the Bidder, or by any indulgence or accommodation granted to the Bidder, or by any variation in the terms of the bid or contract.</p>
+
+<p>5. The liability of the Bank under this guarantee is restricted to <b>₹ {{ tender.emd_amount_formatted }}</b> and shall not be enforceable against the Bank after the validity date specified above unless extended by mutual agreement.</p>
+
+<p>Notwithstanding anything contained herein:</p>
+<ol type="a">
+  <li>Our liability under this Bank Guarantee shall not exceed ₹{{ tender.emd_amount_formatted }} ({{ tender.emd_amount_words }}).</li>
+  <li>This Bank Guarantee shall be valid up to {{ bidder.bg_valid_until }}.</li>
+  <li>We are liable to pay the guaranteed amount or any part thereof under this Bank Guarantee only and only if you serve upon us a written claim or demand on or before {{ bidder.bg_valid_until }}.</li>
+</ol>
+
+<div class="signature-block">
+  <div>
+    <div>For <b>{{ bidder.bank_name }}</b><br>
+    {{ bidder.bank_branch }}</div>
+    <div class="spacer-md"></div>
+    <div class="signature-line" style="width: 240px;">
+      <b>{{ bidder.bg_signing_officer }}</b><br>
+      Authorised Signatory<br>
+      EMP Code: {{ bidder.bg_signing_emp_code }}<br>
+      P.A. No.: {{ bidder.bg_pa_number }}
+    </div>
+  </div>
+  <div class="stamp-area">Bank<br>Seal</div>
+</div>
+
+</body>
+</html>

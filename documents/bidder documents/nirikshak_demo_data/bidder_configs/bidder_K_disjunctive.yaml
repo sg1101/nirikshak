@@ -1,0 +1,332 @@
+# Bidder K — the DISJUNCTIVE EXPERIENCE rule scenario (PRD §7, the wow factor)
+# Evaluated against an additional EXP-002 criterion (CPWD-style):
+#   "Three similar completed works each ≥40% of estimated cost; OR two at ≥60%; OR one at ≥80%"
+# For a ₹50 cr tender: Branch A threshold = ₹20 cr, Branch B = ₹30 cr, Branch C = ₹40 cr
+#
+# Bidder K's portfolio — designed so all three branches are evaluable:
+#   Claim 1: ₹22.5 cr — similar — passes Branch A only
+#   Claim 2: ₹18.0 cr — similar — drops out (below 40%)
+#   Claim 3: ₹35.0 cr — similar — passes A & B
+#   Claim 4: ₹42.0 cr — similar — passes A, B, C
+#   Claim 5: ₹28.0 cr — borderline-similar (routed to Needs Review on similarity)
+#
+# Branch A (≥3 at ≥40%): {1, 3, 4} = 3 → PASS
+# Branch B (≥2 at ≥60%): {3, 4}    = 2 → PASS
+# Branch C (≥1 at ≥80%): {4}       = 1 → PASS
+# Verdict: ELIGIBLE (any branch passes)
+
+short_code: "KIN"
+name: "Karnataka Infra & Engineering Limited"
+trade_name: "Karnataka Infra"
+tagline: "Civil & Heavy Infrastructure Contractors since 2005"
+entity_type: "Public Limited Company"
+date_of_incorporation: "18 May 2005"
+address: "12th Floor, Prestige Meridian, M.G. Road, Bangalore — 560001, Karnataka"
+place: "Bangalore"
+phone: "+91 80 4128 9000"
+email: "tenders@karnatakainfra.in"
+
+pan: "AAGCK8214Q"
+gstin: "29AAGCK8214Q1Z6"
+cin: "L45200KA2005PLC036428"
+
+bank_name: "HDFC Bank"
+bank_branch: "M.G. Road Branch"
+bank_address: "Ground Floor, Prestige Meridian, M.G. Road, Bangalore — 560001"
+bank_ifsc: "HDFC0000128"
+bank_phone: "+91 80 4128 5500"
+
+authorised_signatory: "Krishnamurthy Raghavendra"
+signatory_designation: "Joint Managing Director"
+
+iso_version: "2015"
+iso:
+  certifying_body: "TÜV SÜD South Asia Pvt. Ltd."
+  body_tagline: "Choose Certainty. Add Value."
+  accreditation_body: "National Accreditation Board for Certification Bodies (NABCB)"
+  scope: "Construction of civil and heavy infrastructure works including buildings, roads, bridges, parking facilities, and large-scale paving."
+  cert_number: "TUVSUD-IN-15-QMS-04829"
+  original_issue_long: "08 January 2014"
+  current_issue_long: "08 January 2024"
+  valid_until_long: "07 January 2027"
+  signatory_1_name: "Dr. R. Vasudev"
+  signatory_1_title: "Lead Auditor"
+  signatory_2_name: "TÜV SÜD South Asia"
+  signatory_2_title: "Authorised Signatory"
+  verify_url: "tuvsud.com/india/verify"
+
+ca:
+  firm_name: "Deloitte Haskins & Sells LLP"
+  firm_short: "DHS"
+  address: "Deloitte Centre, Anchorage II, 100/2 Richmond Road, Bangalore — 560025"
+  phone: "+91 80 6627 6000"
+  email: "audit_blr@deloitte.com"
+  frn: "117365W"
+  partner_name: "Anand R. Iyer"
+  partner_mno: "098214"
+  udin: "25098214BHQAVT9821"
+  place: "Bangalore"
+
+gst_date_of_liability: "01 July 2017"
+gst_valid_from: "01 July 2017"
+gst_centre: "Bangalore Central"
+gst_state_jur: "Bangalore — M.G. Road Range"
+gst_officer:
+  name: "Dr. M. Vijayakumar"
+  office: "Office of the Superintendent of Central Tax, M.G. Road Range, Bangalore"
+
+epf_office: "Bangalore Regional Office"
+epf_code: "KN/BNG/0036428"
+epf_date_of_coverage: "01 July 2005"
+epf_reg_date: "12 July 2005"
+epf_signing_officer: "K. R. Govind Rao"
+esi_office: "Bangalore Sub-Regional Office"
+esi_code: "53000364280000999"
+esi_date_of_coverage: "01 August 2005"
+esi_reg_date: "08 August 2005"
+esi_signing_officer: "S. Devika"
+
+cpwd_class: "I"
+cpwd_class_full: "Class I (Super) Civil Contractor"
+cpwd_category: "Civil Engineering Works (All categories — Building, Roads, Bridges, Heavy Civil)"
+cpwd_tender_limit_formatted: "1,00,00,00,000"
+cpwd_tender_limit_words: "Rupees One Hundred Crore"
+cpwd_original_enlist_date: "12 September 2008"
+cpwd_last_renewal: "15 September 2024"
+cpwd_valid_until: "14 September 2027"
+cpwd_enlist_date: "15 September 2024"
+cpwd_authority:
+  zone_office: "CPWD Bangalore Central Zone"
+  zone_short: "BCZ"
+  enlisting_authority: "Chief Engineer, CPWD Bangalore Central Zone"
+  signing_officer: "Eng. Dr. K. P. Subramanian"
+  signing_designation: "Chief Engineer (Civil)"
+  place: "Bangalore"
+
+bg_number: "HDFC/BG/2025/004821"
+bg_date_long: "20 April 2025"
+bg_valid_until: "10 December 2025"
+bg_signing_officer: "R. Mahalingam"
+bg_signing_emp_code: "HDFC/BLR/00821"
+bg_pa_number: "PA/HDFC/2024/00184"
+
+submission_year: 2025
+submission_date_long: "28 April 2025"
+fy_minus_1: "2024-25"
+fy_minus_2: "2023-24"
+fy_minus_3: "2022-23"
+num_completion_certs: 5
+
+financials:
+  turnover_history:
+    - year: "2024-25"
+      amount: 482000000     # ₹48.2 cr — comfortably above all thresholds
+    - year: "2023-24"
+      amount: 425000000     # ₹42.5 cr
+    - year: "2022-23"
+      amount: 386000000     # ₹38.6 cr
+  networth: 184000000       # ₹18.4 cr
+  networth_as_of: "31 March 2025"
+  pl:
+    revenue:    {fy1: "4820.00", fy2: "4250.00", fy3: "3860.00"}
+    other_income: {fy1: "48.20",  fy2: "42.50",  fy3: "38.60"}
+    total_income: {fy1: "4868.20", fy2: "4292.50", fy3: "3898.60"}
+    materials:   {fy1: "3088.00", fy2: "2741.00", fy3: "2510.00"}
+    employee:    {fy1: "578.40",  fy2: "510.00",  fy3: "463.20"}
+    finance:     {fy1: "144.60",  fy2: "127.50",  fy3: "115.80"}
+    depreciation: {fy1: "168.70", fy2: "148.75",  fy3: "135.10"}
+    other_exp:   {fy1: "289.20",  fy2: "255.00",  fy3: "231.60"}
+    total_expenses: {fy1: "4268.90", fy2: "3782.25", fy3: "3455.70"}
+    pbt:         {fy1: "599.30",  fy2: "510.25",  fy3: "442.90"}
+    tax:         {fy1: "168.50",  fy2: "143.20",  fy3: "124.30"}
+    pat:         {fy1: "430.80",  fy2: "367.05",  fy3: "318.60"}
+  bs:
+    share_cap:   {fy1: "500.00",  fy2: "500.00",  fy3: "500.00"}
+    reserves:    {fy1: "1340.00", fy2: "910.00",  fy3: "542.95"}
+    networth:    {fy1: "1840.00", fy2: "1410.00", fy3: "1042.95"}
+    lt_borrow:   {fy1: "320.00",  fy2: "380.00",  fy3: "420.00"}
+    st_liab:     {fy1: "920.00",  fy2: "780.00",  fy3: "650.00"}
+    total_eql:   {fy1: "3080.00", fy2: "2570.00", fy3: "2112.95"}
+    ppe:         {fy1: "820.00",  fy2: "750.00",  fy3: "680.00"}
+    current_assets: {fy1: "2260.00", fy2: "1820.00", fy3: "1432.95"}
+    total_assets: {fy1: "3080.00", fy2: "2570.00", fy3: "2112.95"}
+
+profile:
+  about: "Karnataka Infra & Engineering Limited is a leading civil and heavy infrastructure contractor with 20 years of operational experience across South India. Listed on BSE since 2014, we have executed over 80 major projects for central and state government clients, public sector undertakings, and large institutions, with annual turnover consistently above ₹40 crore over the past five years."
+  head_name: "Krishnamurthy Raghavendra"
+  head_designation: "Joint Managing Director"
+  industry_for_epf: "Construction — Civil & Heavy Infrastructure"
+  additional_compliance: "Registered with Karnataka B&OCWWB; CRISIL credit rating BBB+ Stable"
+  specialisations:
+    - "Heavy civil and infrastructure construction"
+    - "Large-scale parking facilities and hardstands (>5,000 sq m)"
+    - "RCC framed buildings up to G+10"
+    - "Bituminous and cement-concrete road works"
+    - "Bridges, culverts, and drainage structures"
+  key_personnel:
+    - {name: "Krishnamurthy Raghavendra",  designation: "Joint MD",          qualification: "B.E. (Civil), MBA (IIM-A)",     experience_years: 28}
+    - {name: "Dr. Sushma Patel",            designation: "Chief Engineer",    qualification: "Ph.D. (Civil), IIT Madras",     experience_years: 24}
+    - {name: "R. Venkatesan",               designation: "Project Director",  qualification: "B.E. (Civil), M.Tech",          experience_years: 22}
+    - {name: "Lokesh Kumar",                designation: "Quality Director",  qualification: "B.E. (Civil), Lead Auditor",    experience_years: 18}
+  equipment:
+    - "Heavy excavators (8 nos.) and tippers (15 nos.)"
+    - "RMC plants (2 nos., 60 cum/hr capacity each)"
+    - "Concrete pumps, vibrators, and tower cranes"
+    - "Bitumen plant and pavers"
+    - "Full instrumentation and material testing laboratory"
+  notable_projects:
+    - {name: "Cargo handling parking & hardstand, BIAL Phase II", client: "Bangalore International Airport Ltd.", year: "2024", value: "₹42 cr"}
+    - {name: "Vehicle parking and operational area, Indian Air Force Yelahanka",  client: "Indian Air Force",     year: "2024", value: "₹35 cr"}
+    - {name: "Office and parking complex, NTPC Karnataka",       client: "NTPC Limited",                          year: "2023", value: "₹22.5 cr"}
+    - {name: "RCC parking deck, Manyata Tech Park (Embassy)",    client: "Embassy Group",                         year: "2022", value: "₹28 cr"}
+    - {name: "Logistics yard, FCI Karnataka Region",             client: "Food Corporation of India",             year: "2021", value: "₹18 cr"}
+
+# === The five completion certs that drive the disjunctive verdict ===
+completion_projects:
+  # Claim 1: ₹22.5 cr — similar — passes Branch A only
+  - short_name: "NTPC-PARK-2023"
+    issuing_authority: "NTPC Limited"
+    issuing_authority_seal: "NTPC LIMITED · GOVT. OF INDIA"
+    issuing_office: "Office of the General Manager (Civil), NTPC Karnataka Region"
+    issuing_address: "NTPC Regional Office, Whitefield, Bangalore — 560066"
+    cert_ref_number: "NTPC/KAR/CIV/COMPL/2023/0048"
+    cert_issue_date_long: "12 December 2023"
+    work_description: "Construction of office and vehicle parking complex including operational hardstand, drainage, and security shed for NTPC Karnataka Regional Office."
+    location: "Whitefield, Bangalore"
+    client_office: "NTPC Limited, Karnataka Region"
+    contract_value: 225000000     # ₹22.5 cr — Claim 1
+    executed_value: 225000000
+    work_order_number: "NTPC/KAR/CIV/WO/2021/0024"
+    work_order_date_long: "10 February 2021"
+    start_date_long: "01 March 2021"
+    stipulated_completion_long: "30 September 2023"
+    actual_completion_long: "30 November 2023"
+    scope_summary: "Office building (G+2, ~3,500 sq m), vehicle parking and operational hardstand (~12,000 sq m), drainage, security and access infrastructure."
+    includes_components:
+      - "RCC framed office building, G+2, ~3,500 sq m"
+      - "M-30 cement-concrete hardstand, ~12,000 sq m"
+      - "Storm-water drainage and culverts"
+      - "Security shed, boundary wall and motorised gates"
+    quality_grade: "Good"
+    completion_remark: "with a 60-day extension granted on account of additional scope"
+    signing_officer_name: "Eng. R. K. Sharma"
+    signing_officer_designation: "General Manager (Civil), NTPC Karnataka"
+
+  # Claim 2: ₹18.0 cr — similar — DROPS OUT (below 40% threshold ₹20 cr)
+  - short_name: "FCI-LOG-2021"
+    issuing_authority: "Food Corporation of India"
+    issuing_authority_seal: "FCI · GOVT. OF INDIA · DFPD"
+    issuing_office: "Office of the General Manager (Engineering), FCI Karnataka Region"
+    issuing_address: "FCI Regional Office, Mahatma Gandhi Road, Bangalore — 560001"
+    cert_ref_number: "FCI/KAR/ENGG/COMPL/2021/0089"
+    cert_issue_date_long: "30 December 2021"
+    work_description: "Construction of logistics yard and vehicle handling area for FCI Karnataka Regional grain storage operations."
+    location: "Whitefield, Bangalore"
+    client_office: "Food Corporation of India, Karnataka Region"
+    contract_value: 180000000     # ₹18.0 cr — Claim 2 (below 40% — drops out)
+    executed_value: 180000000
+    work_order_number: "FCI/KAR/ENGG/WO/2019/0042"
+    work_order_date_long: "15 October 2019"
+    start_date_long: "01 December 2019"
+    stipulated_completion_long: "30 September 2021"
+    actual_completion_long: "20 December 2021"
+    scope_summary: "Cement-concrete logistics yard (~10,000 sq m), vehicle handling and weighbridge area, drainage, lighting, boundary wall."
+    includes_components:
+      - "M-30 cement-concrete yard, ~10,000 sq m"
+      - "Weighbridge platform and approach"
+      - "Boundary wall and access gates"
+      - "High-mast security lighting"
+    quality_grade: "Satisfactory"
+    completion_remark: "with substantial delay due to COVID-19 lockdown"
+    signing_officer_name: "Eng. Suresh Babu T."
+    signing_officer_designation: "General Manager (Engineering), FCI Karnataka"
+
+  # Claim 3: ₹35.0 cr — similar — passes A & B
+  - short_name: "IAF-OPS-2024"
+    issuing_authority: "Indian Air Force"
+    issuing_authority_seal: "INDIAN AIR FORCE · MINISTRY OF DEFENCE"
+    issuing_office: "Office of the Officer Commanding (Civil Works), Air Force Station Yelahanka"
+    issuing_address: "Air Force Station, Yelahanka, Bangalore — 560063"
+    cert_ref_number: "AFS-YK/CIV/COMPL/2024/0012"
+    cert_issue_date_long: "10 February 2024"
+    work_description: "Construction of operational vehicle parking and ground equipment hardstand area for Indian Air Force Station Yelahanka."
+    location: "Yelahanka, Bangalore"
+    client_office: "Indian Air Force, Air Force Station Yelahanka"
+    contract_value: 350000000     # ₹35.0 cr — Claim 3
+    executed_value: 350000000
+    work_order_number: "AFS-YK/CIV/WO/2022/0009"
+    work_order_date_long: "20 January 2022"
+    start_date_long: "01 March 2022"
+    stipulated_completion_long: "30 November 2023"
+    actual_completion_long: "20 January 2024"
+    scope_summary: "Operational vehicle parking and ground-equipment hardstand (~22,000 sq m), allied drainage, security infrastructure."
+    includes_components:
+      - "M-40 cement-concrete hardstand, ~22,000 sq m"
+      - "Heavy-duty drainage with oil interceptors"
+      - "Sentry posts, boundary wall, access roads"
+      - "High-mast security and operational lighting"
+    quality_grade: "Excellent"
+    completion_remark: "with a 50-day extension on account of additional scope"
+    signing_officer_name: "Group Captain Vikram Singh, VSM"
+    signing_officer_designation: "Officer Commanding (Civil Works), AFS Yelahanka"
+
+  # Claim 4: ₹42.0 cr — similar — passes A, B, AND C (the 80% claim)
+  - short_name: "BIAL-PARK-2024"
+    issuing_authority: "Bangalore International Airport Limited"
+    issuing_authority_seal: "BIAL · KEMPEGOWDA INTERNATIONAL AIRPORT"
+    issuing_office: "Office of the Senior Vice President (Engineering), BIAL"
+    issuing_address: "Kempegowda International Airport, Devanahalli, Bangalore — 560300"
+    cert_ref_number: "BIAL/ENGG/CIV/COMPL/2024/0028"
+    cert_issue_date_long: "20 March 2024"
+    work_description: "Construction of cargo handling vehicle parking area and operational hardstand — Phase II expansion at Kempegowda International Airport."
+    location: "Devanahalli, Bangalore"
+    client_office: "Bangalore International Airport Limited"
+    contract_value: 420000000     # ₹42.0 cr — Claim 4 (passes 80% threshold)
+    executed_value: 420000000
+    work_order_number: "BIAL/ENGG/CIV/WO/2022/0042"
+    work_order_date_long: "15 February 2022"
+    start_date_long: "10 March 2022"
+    stipulated_completion_long: "31 January 2024"
+    actual_completion_long: "10 March 2024"
+    scope_summary: "Large-scale cargo handling parking area and operational hardstand (~28,000 sq m), heavy-duty drainage, security infrastructure, ancillary facilities."
+    includes_components:
+      - "M-40 reinforced cement-concrete hardstand, ~28,000 sq m"
+      - "Heavy-duty oil-grit interceptor drainage system"
+      - "Security infrastructure including CCTV poles and barriers"
+      - "Operational ancillary buildings (sentry, control)"
+      - "Internal access roads with signage and markings"
+    quality_grade: "Excellent"
+    completion_remark: "with a 40-day extension on account of monsoon-related delays"
+    signing_officer_name: "Eng. Pavan Subramanian"
+    signing_officer_designation: "Senior Vice President (Engineering), BIAL"
+
+  # Claim 5: ₹28.0 cr — borderline-similar (parking deck — different structure type)
+  # Routed to Needs Review on similarity (this exercises the similarity classifier)
+  - short_name: "EMBASSY-DECK-2022"
+    issuing_authority: "Embassy Office Parks Pvt. Ltd."
+    issuing_authority_seal: "EMBASSY GROUP"
+    issuing_office: "Office of the Vice President (Projects), Embassy Group"
+    issuing_address: "Embassy Golflinks, Off Intermediate Ring Road, Bangalore — 560071"
+    cert_ref_number: "EMB/PROJ/CIV/COMPL/2022/0124"
+    cert_issue_date_long: "30 November 2022"
+    work_description: "Construction of multi-level RCC parking deck (3-level structure) at Manyata Tech Park."
+    location: "Manyata Tech Park, Nagavara, Bangalore"
+    client_office: "Embassy Office Parks Pvt. Ltd."
+    contract_value: 280000000     # ₹28.0 cr — Claim 5 (borderline similarity — multi-level deck vs at-grade parking)
+    executed_value: 280000000
+    work_order_number: "EMB/PROJ/CIV/WO/2020/0028"
+    work_order_date_long: "20 August 2020"
+    start_date_long: "10 September 2020"
+    stipulated_completion_long: "31 August 2022"
+    actual_completion_long: "20 November 2022"
+    scope_summary: "Multi-level RCC parking deck (3 levels above grade, ~600 vehicle capacity), elevators, ramps, fire-safety systems, mechanical-electrical-plumbing (MEP)."
+    includes_components:
+      - "3-level RCC parking deck (above-grade structure)"
+      - "Elevators (4 nos.) and entry/exit ramps"
+      - "Fire detection and suppression systems"
+      - "Internal MEP services"
+    quality_grade: "Good"
+    completion_remark: "with a 60-day extension on account of pandemic delays"
+    signing_officer_name: "Eng. R. Krishnan"
+    signing_officer_designation: "Vice President (Projects), Embassy Group"
+    attestation_remark: "This work involved an above-grade multi-level RCC parking deck with elevators and MEP integration; nature differs from typical at-grade vehicle parking hardstand projects."

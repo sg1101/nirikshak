@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="static/styles.css">
+<title>Integrity Pact — {{ bidder.name }}</title>
+</head>
+<body>
+
+<div class="doc-title" style="margin-top: 20px;">Integrity Pact</div>
+<div class="doc-subtitle">As per format prescribed by the Central Vigilance Commission</div>
+
+<div style="margin-top: 24px;">
+
+<p>This Integrity Pact (hereinafter referred to as "the Pact") is entered into between, on one hand:</p>
+
+<p style="margin-left: 24px;"><b>{{ tender.procuring_authority }}</b>, having its office at {{ tender.authority_address }} (hereinafter referred to as "the Buyer", which expression shall include its successors and assigns),</p>
+
+<p>and on the other hand:</p>
+
+<p style="margin-left: 24px;"><b>M/s {{ bidder.name }}</b>, a company duly incorporated under the laws of India, having its registered office at {{ bidder.address }}, represented by {{ bidder.authorised_signatory }}, {{ bidder.signatory_designation }} (hereinafter referred to as "the Bidder").</p>
+
+<p>This Pact is entered into in connection with the bid submitted by the Bidder for Tender No. <b>{{ tender.tender_number }}</b> for the work of "<b>{{ tender.title }}</b>".</p>
+
+<h3>Section 1 — Commitments of the Buyer</h3>
+<ol>
+  <li>The Buyer commits to take all measures necessary to prevent corruption and to observe the following principles:
+    <ol type="a">
+      <li>No employee of the Buyer, personally or through family members, will demand, take a promise of, or accept, for self or third person, any material or other benefit which the employee is not legally entitled to, in connection with the bid for, or the execution of, a contract.</li>
+      <li>The Buyer will, during the bid evaluation process, treat all bidders alike, and will provide to all bidders the same information and not provide to any bidder confidential / additional information through which the bidder could obtain an advantage.</li>
+      <li>The Buyer will exclude from the process all known prejudiced persons.</li>
+    </ol>
+  </li>
+  <li>If the Buyer obtains information on the conduct of any of its employees that is a criminal offence under the IPC / PC Act, or if there be a substantive suspicion in this regard, the Buyer will inform the Chief Vigilance Officer and in addition can initiate disciplinary actions.</li>
+</ol>
+
+<h3>Section 2 — Commitments of the Bidder</h3>
+<ol>
+  <li>The Bidder commits himself to take all measures necessary to prevent corrupt practices, unfair means, and illegal activities during any stage of his bid or during any pre-contract or post-contract stage. In particular:
+    <ol type="a">
+      <li>The Bidder will not, directly or through any other person or firm, offer, promise, or give to any of the Buyer's employees or to any third person, any material or other benefit which he/she is not legally entitled to, in order to obtain in exchange any advantage of any kind whatsoever during the tender process or during the execution of the contract.</li>
+      <li>The Bidder will not enter with other bidders into any undisclosed agreement or understanding, whether formal or informal, that would restrict competitive bidding, including price collusion, bid rotation, or division of contracts.</li>
+      <li>The Bidder will not commit any offence under the relevant IPC / PC Act or any other applicable Indian statute. Further, the Bidder will not use improperly, for purposes of competition or personal gain, or pass on to others, any information or document provided by the Buyer as part of the business relationship, regarding plans, technical proposals, and business details, including information contained or transmitted electronically.</li>
+      <li>The Bidder of foreign origin shall disclose the name and address of agents and representatives in India, and Indian Bidders shall disclose their foreign principals or associates, if any.</li>
+      <li>The Bidder will, when presenting his bid, disclose any and all payments he has made, is committed to, or intends to make to agents, brokers, or any other intermediaries in connection with the award of the contract.</li>
+    </ol>
+  </li>
+  <li>The Bidder will not instigate third persons to commit offences outlined above or be an accessory to such offences.</li>
+</ol>
+
+<h3>Section 3 — Disqualification from tender process and exclusion from future contracts</h3>
+<p>If the Bidder, before contract award, has committed a transgression through a violation of Section 2, or in any other form, such as to put his reliability or credibility as Bidder into question, the Buyer is entitled to disqualify the Bidder from the tender process or to terminate the contract, if already signed, for such reason.</p>
+
+<h3>Section 4 — Compensation for Damages</h3>
+<p>If the Buyer has disqualified the Bidder from the tender process prior to the award according to Section 3, the Buyer is entitled to demand and recover from the Bidder liquidated damages of the amount equivalent to Earnest Money Deposit / Bid Security.</p>
+
+<h3>Section 5 — Previous Transgression</h3>
+<p>The Bidder declares that no previous transgressions occurred in the last 3 years with any other Company in any country conforming to the Anti-Corruption approach or with any other Public Sector Enterprise in India that could justify his exclusion from the tender process.</p>
+
+<h3>Section 6 — Equal treatment of all Bidders / Subcontractors</h3>
+<p>The Bidder undertakes to demand from all subcontractors a commitment in conformity with this Integrity Pact, and to submit it to the Buyer before contract signing.</p>
+
+<h3>Section 7 — Independent External Monitor</h3>
+<p>The Buyer appoints competent and credible Independent External Monitor (IEM) for this Pact. The task of the Monitor is to review independently and objectively, whether and to what extent the parties comply with the obligations under the Pact.</p>
+
+<h3>Section 8 — Pact Duration</h3>
+<p>This Pact begins when both parties have legally signed it. It expires for the Bidder either 12 months after the last payment under the respective contract, or after 6 months from the date of issue of the disqualification letter in case of an unsuccessful Bidder.</p>
+
+<h3>Section 9 — Other Provisions</h3>
+<p>This Pact is subject to Indian Law. Place of performance and jurisdiction is the office of the Buyer. The actions stipulated in this Integrity Pact are without prejudice to any other legal action that may follow in accordance with the provisions of the extant law in force relating to any civil or criminal proceedings.</p>
+
+<div class="spacer-lg"></div>
+
+<table style="width: 100%; margin-top: 30px;">
+<tr>
+  <td style="width: 50%; vertical-align: top; padding-right: 20px;">
+    <b>For the Buyer</b><br>
+    {{ tender.procuring_authority }}<br><br>
+    <div style="height: 40px; border-bottom: 1px solid #000;"></div>
+    Authorised Signatory<br><br>
+    Name: ____________________________<br>
+    Designation: ______________________<br><br>
+    <b>Witness:</b><br>
+    1. ____________________________
+  </td>
+  <td style="width: 50%; vertical-align: top; padding-left: 20px;">
+    <b>For the Bidder</b><br>
+    {{ bidder.name }}<br><br>
+    <div style="height: 40px; border-bottom: 1px solid #000;"></div>
+    Authorised Signatory<br><br>
+    Name: <b>{{ bidder.authorised_signatory }}</b><br>
+    Designation: <b>{{ bidder.signatory_designation }}</b><br><br>
+    <b>Witness:</b><br>
+    1. ____________________________
+  </td>
+</tr>
+</table>
+
+<p style="margin-top: 30px;" class="note-small">Place: {{ bidder.place }} &nbsp;|&nbsp; Date: {{ submission_date_long }}</p>
+
+</div>
+
+</body>
+</html>

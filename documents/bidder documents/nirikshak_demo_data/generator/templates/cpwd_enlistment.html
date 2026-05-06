@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="static/styles.css">
+<title>CPWD Enlistment Certificate — {{ bidder.name }}</title>
+</head>
+<body>
+
+<div class="letterhead-govt">
+  <div class="seal">सत्यमेव जयते</div>
+  <h1>Central Public Works Department</h1>
+  <div class="subhead">Government of India · Ministry of Housing and Urban Affairs</div>
+  <div class="subhead">{{ cpwd.zone_office }}</div>
+</div>
+
+<div class="ref-line">
+  <div>No: CPWD/{{ cpwd.zone_short }}/ENL/{{ bidder.short_code }}/{{ submission_year }}</div>
+  <div>Date: {{ bidder.cpwd_enlist_date }}</div>
+</div>
+
+<div class="doc-title">Certificate of Enlistment</div>
+<div class="doc-subtitle">[Issued under Rule 17 of CPWD Manual on Enlistment of Contractors]</div>
+
+<p>This is to certify that <b>M/s {{ bidder.name }}</b>, having registered office at {{ bidder.address }}, PAN <b>{{ bidder.pan }}</b>, GSTIN <b>{{ bidder.gstin }}</b>, is enlisted with the Central Public Works Department in the following category:</p>
+
+<table class="formal" style="margin-top: 14px;">
+  <tr><td style="width: 40%;"><b>Class of Enlistment</b></td><td><b style="font-size: 13pt; color: #1a3a6a;">CLASS {{ bidder.cpwd_class }}</b> ({{ bidder.cpwd_class_full }})</td></tr>
+  <tr><td><b>Category of Work</b></td><td>{{ bidder.cpwd_category }}</td></tr>
+  <tr><td><b>Tendering Limit (per work)</b></td><td>Up to ₹ <b>{{ bidder.cpwd_tender_limit_formatted }}</b> ({{ bidder.cpwd_tender_limit_words }})</td></tr>
+  <tr><td><b>Date of Original Enlistment</b></td><td>{{ bidder.cpwd_original_enlist_date }}</td></tr>
+  <tr><td><b>Date of Last Renewal</b></td><td>{{ bidder.cpwd_last_renewal }}</td></tr>
+  <tr><td><b>Valid Until</b></td><td><b>{{ bidder.cpwd_valid_until }}</b></td></tr>
+  <tr><td><b>Enlistment Authority</b></td><td>{{ cpwd.enlisting_authority }}</td></tr>
+  <tr><td><b>Status</b></td><td><b style="color: #2a6a2a;">ACTIVE — In Good Standing</b></td></tr>
+</table>
+
+<p style="margin-top: 18px;">The above-named contractor has been enlisted in the CPWD list of contractors based on the technical, financial, and managerial capacity verified by this office at the time of enlistment, and is eligible to participate in tenders within the tendering limit specified.</p>
+
+<p>This enlistment certificate does not, by itself, entitle the contractor to any work or to participate in any specific tender. Eligibility for individual tenders shall be governed by the specific eligibility conditions of the respective tenders.</p>
+
+<p>The contractor is required to inform this office of any material change in the constitution, financial standing, or technical capacity of the firm immediately. Failure to do so may result in suspension or cancellation of enlistment.</p>
+
+<div class="signature-block">
+  <div>
+    <div class="spacer-md"></div>
+    <div class="signature-line" style="width: 240px;">
+      <b>{{ cpwd.signing_officer }}</b><br>
+      {{ cpwd.signing_designation }}<br>
+      {{ cpwd.zone_office }}
+    </div>
+  </div>
+  <div class="stamp-area">CPWD<br>Office<br>Seal</div>
+</div>
+
+<div style="margin-top: 30px;" class="note-small">
+Place: {{ cpwd.place }}<br>
+Date of Issue: {{ bidder.cpwd_enlist_date }}<br>
+Note: This certificate may be verified through the CPWD Contractor Information System (CIS) at cpwd.gov.in/cis quoting the Enlistment Code.
+</div>
+
+</body>
+</html>

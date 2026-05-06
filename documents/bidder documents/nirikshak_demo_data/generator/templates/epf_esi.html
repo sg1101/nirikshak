@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="static/styles.css">
+<title>EPF and ESI Registration — {{ bidder.name }}</title>
+</head>
+<body class="sans">
+
+<!-- ======= EPF SECTION ======= -->
+<div class="letterhead-govt">
+  <div class="seal">EMPLOYEES' PROVIDENT FUND ORGANISATION</div>
+  <h1>EPFO Registration Certificate</h1>
+  <div class="subhead">Ministry of Labour and Employment, Government of India</div>
+</div>
+
+<div class="ref-line">
+  <div>Ref: EPFO/{{ bidder.epf_office }}/REG/{{ bidder.short_code }}</div>
+  <div>Date: {{ bidder.epf_reg_date }}</div>
+</div>
+
+<div class="doc-title">Certificate of Coverage under EPF & MP Act, 1952</div>
+
+<table class="formal" style="margin-top: 14px;">
+  <tr><td style="width: 35%;"><b>Establishment Code (PF Code)</b></td><td style="font-family: 'Courier New', monospace; font-size: 12pt;"><b>{{ bidder.epf_code }}</b></td></tr>
+  <tr><td><b>Name of Establishment</b></td><td>{{ bidder.name }}</td></tr>
+  <tr><td><b>Address</b></td><td>{{ bidder.address }}</td></tr>
+  <tr><td><b>Date of Coverage</b></td><td>{{ bidder.epf_date_of_coverage }}</td></tr>
+  <tr><td><b>Section under which Covered</b></td><td>Section 1(3)(a) of the EPF & MP Act, 1952</td></tr>
+  <tr><td><b>Industry / Activity</b></td><td>{{ bidder.profile.industry_for_epf }}</td></tr>
+  <tr><td><b>Regional Office</b></td><td>{{ bidder.epf_office }}</td></tr>
+  <tr><td><b>Status</b></td><td><b style="color: #2a6a2a;">ACTIVE — Compliant</b></td></tr>
+</table>
+
+<p style="margin-top: 14px; font-size: 10pt;">The above-named establishment is covered under the Employees' Provident Funds and Miscellaneous Provisions Act, 1952, with effect from the date specified above. Monthly contributions are being remitted as per statutory requirements.</p>
+
+<div style="margin-top: 30px; text-align: right;">
+  <div style="display: inline-block; text-align: left;">
+    <b>{{ bidder.epf_signing_officer }}</b><br>
+    Regional P.F. Commissioner<br>
+    {{ bidder.epf_office }}
+  </div>
+</div>
+
+<div style="page-break-after: always;"></div>
+
+<!-- ======= ESI SECTION ======= -->
+<div class="letterhead-govt">
+  <div class="seal">EMPLOYEES' STATE INSURANCE CORPORATION</div>
+  <h1>ESIC Registration Certificate</h1>
+  <div class="subhead">Ministry of Labour and Employment, Government of India</div>
+</div>
+
+<div class="ref-line">
+  <div>Ref: ESIC/{{ bidder.esi_office }}/REG/{{ bidder.short_code }}</div>
+  <div>Date: {{ bidder.esi_reg_date }}</div>
+</div>
+
+<div class="doc-title">Certificate of Registration under ESI Act, 1948</div>
+
+<table class="formal" style="margin-top: 14px;">
+  <tr><td style="width: 35%;"><b>Employer Code (ESI Code)</b></td><td style="font-family: 'Courier New', monospace; font-size: 12pt;"><b>{{ bidder.esi_code }}</b></td></tr>
+  <tr><td><b>Name of Employer</b></td><td>{{ bidder.name }}</td></tr>
+  <tr><td><b>Address</b></td><td>{{ bidder.address }}</td></tr>
+  <tr><td><b>Date of Registration</b></td><td>{{ bidder.esi_date_of_coverage }}</td></tr>
+  <tr><td><b>Branch Office</b></td><td>{{ bidder.esi_office }}</td></tr>
+  <tr><td><b>Type of Establishment</b></td><td>{{ bidder.profile.industry_for_epf }}</td></tr>
+  <tr><td><b>Status</b></td><td><b style="color: #2a6a2a;">ACTIVE — Compliant</b></td></tr>
+</table>
+
+<p style="margin-top: 14px; font-size: 10pt;">The above-named employer is registered under the Employees' State Insurance Act, 1948, with effect from the date specified. ESI contributions are being remitted as per statutory requirements.</p>
+
+<div style="margin-top: 30px; text-align: right;">
+  <div style="display: inline-block; text-align: left;">
+    <b>{{ bidder.esi_signing_officer }}</b><br>
+    Regional Director (ESIC)<br>
+    {{ bidder.esi_office }}
+  </div>
+</div>
+
+</body>
+</html>

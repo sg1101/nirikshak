@@ -1,0 +1,330 @@
+# Bidder 01 — clearly Eligible
+# Strong financials, 5 completion certs, valid GST, current ISO 9001:2015.
+# Used as the reference packet for testing the generator end-to-end.
+
+short_code: "ABC"
+name: "ABC Constructions Private Limited"
+trade_name: "ABC Constructions"
+tagline: "Civil & Structural Contractors since 2009"
+entity_type: "Private Limited Company"
+date_of_incorporation: "12 March 2009"
+address: "Plot No. 47, 3rd Cross, Industrial Area, Peenya, Bangalore — 560058, Karnataka"
+place: "Bangalore"
+phone: "+91 80 4000 1234"
+email: "tenders@abcconstructions.in"
+
+# Statutory IDs (mock — fake but format-valid)
+pan: "AABCA1234C"                # Indian PAN format: 5 letters + 4 digits + 1 letter
+gstin: "29AABCA1234C1ZK"          # 15 chars: state code (29 = Karnataka) + PAN + entity + Z + check
+cin: "U45200KA2009PTC048721"      # CIN format
+
+# Banking
+bank_name: "State Bank of India"
+bank_branch: "Peenya Industrial Estate Branch"
+bank_address: "First Floor, SBI Building, Peenya Industrial Estate, Bangalore — 560058"
+bank_ifsc: "SBIN0010274"
+bank_phone: "+91 80 2839 0274"
+
+# Authorised signatory
+authorised_signatory: "Rajeshwari M. Iyengar"
+signatory_designation: "Managing Director"
+
+# ISO certificate
+iso_version: "2015"
+iso:
+  certifying_body: "Bureau Veritas Certification India Pvt. Ltd."
+  body_tagline: "Move Forward with Confidence"
+  accreditation_body: "National Accreditation Board for Certification Bodies (NABCB)"
+  scope: "Construction of civil works including buildings, roads, parking facilities, and allied infrastructure for government and institutional clients."
+  cert_number: "BV-IN-15-QMS-7821"
+  original_issue_long: "12 August 2018"
+  current_issue_long: "12 August 2024"
+  valid_until_long: "11 August 2027"
+  signatory_1_name: "Anil Khurana"
+  signatory_1_title: "Lead Auditor"
+  signatory_2_name: "Bureau Veritas Certification India"
+  signatory_2_title: "Authorised Signatory"
+  verify_url: "certification.bureauveritas.com/verify"
+
+# Chartered Accountant (issuer of turnover cert and auditor of financials)
+ca:
+  firm_name: "Krishnan Murthy & Associates"
+  firm_short: "KM&A"
+  address: "402, Saroja Towers, MG Road, Bangalore — 560001"
+  phone: "+91 80 2558 9012"
+  email: "audit@kmandassociates.in"
+  frn: "008214S"
+  partner_name: "Vinay Krishnan"
+  partner_mno: "210345"
+  udin: "25210345BHQXVJ4587"
+  place: "Bangalore"
+
+# GST registration metadata
+gst_date_of_liability: "01 July 2017"
+gst_valid_from: "01 July 2017"
+gst_centre: "Bangalore Central"
+gst_state_jur: "Bangalore — Peenya Range"
+gst_officer:
+  name: "K. S. Ramamurthy"
+  office: "Office of the Superintendent of Central Tax, Peenya Range, Bangalore"
+
+# EPF/ESI metadata
+epf_office: "Bangalore Regional Office"
+epf_code: "KN/BNG/0048721"
+epf_date_of_coverage: "01 April 2010"
+epf_reg_date: "05 April 2010"
+epf_signing_officer: "Sridhar Rao"
+esi_office: "Bangalore Sub-Regional Office"
+esi_code: "53000489120000999"
+esi_date_of_coverage: "01 May 2010"
+esi_reg_date: "10 May 2010"
+esi_signing_officer: "Lakshmi Narayan"
+
+# CPWD enlistment
+cpwd_class: "II"
+cpwd_class_full: "Class II Civil Contractor"
+cpwd_category: "Civil Engineering Works (Building, Roads, Allied Civil)"
+cpwd_tender_limit_formatted: "15,00,00,000"
+cpwd_tender_limit_words: "Rupees Fifteen Crore"
+cpwd_original_enlist_date: "10 June 2014"
+cpwd_last_renewal: "12 June 2024"
+cpwd_valid_until: "11 June 2027"
+cpwd_enlist_date: "12 June 2024"
+cpwd_authority:
+  zone_office: "CPWD Bangalore Central Zone"
+  zone_short: "BCZ"
+  enlisting_authority: "Superintending Engineer, CPWD Bangalore Central Zone"
+  signing_officer: "Eng. Suresh Babu"
+  signing_designation: "Superintending Engineer"
+  place: "Bangalore"
+
+# EMD Bank Guarantee
+bg_number: "SBIN/BG/2025/004821"
+bg_date_long: "20 April 2025"
+bg_valid_until: "10 December 2025"
+bg_signing_officer: "Mahesh Krishnan"
+bg_signing_emp_code: "SBI/BLR/00481"
+bg_pa_number: "PA/SBI/2024/00128"
+
+# Submission timeline
+submission_year: 2025
+submission_date_long: "28 April 2025"
+fy_minus_1: "2024-25"
+fy_minus_2: "2023-24"
+fy_minus_3: "2022-23"
+
+# Number of completion certs (used in cover letter enclosure list)
+num_completion_certs: 5
+
+# Financial summary (₹ in lakhs for P&L and BS)
+financials:
+  # Annual turnover history (used by CA cert)
+  turnover_history:
+    - year: "2024-25"
+      amount: 78500000     # ₹7.85 crore
+    - year: "2023-24"
+      amount: 64200000     # ₹6.42 crore
+    - year: "2022-23"
+      amount: 55800000     # ₹5.58 crore
+  networth: 32400000       # ₹3.24 crore
+  networth_as_of: "31 March 2025"
+  # Profit & Loss statement (₹ in lakhs)
+  pl:
+    revenue:    {fy1: "785.00", fy2: "642.00", fy3: "558.00"}
+    other_income: {fy1: "8.40",   fy2: "6.20",   fy3: "4.80"}
+    total_income: {fy1: "793.40", fy2: "648.20", fy3: "562.80"}
+    materials:   {fy1: "498.20", fy2: "412.40", fy3: "362.80"}
+    employee:    {fy1: "112.50", fy2: "94.20",  fy3: "82.40"}
+    finance:     {fy1: "28.40",  fy2: "22.10",  fy3: "20.50"}
+    depreciation: {fy1: "32.10", fy2: "28.40",  fy3: "26.00"}
+    other_exp:   {fy1: "48.20",  fy2: "40.80",  fy3: "35.20"}
+    total_expenses: {fy1: "719.40", fy2: "597.90", fy3: "526.90"}
+    pbt:         {fy1: "74.00",  fy2: "50.30",  fy3: "35.90"}
+    tax:         {fy1: "21.00",  fy2: "13.50",  fy3: "9.80"}
+    pat:         {fy1: "53.00",  fy2: "36.80",  fy3: "26.10"}
+  # Balance sheet (₹ in lakhs, as at 31 March)
+  bs:
+    share_cap:   {fy1: "100.00", fy2: "100.00", fy3: "100.00"}
+    reserves:    {fy1: "224.00", fy2: "171.00", fy3: "134.20"}
+    networth:    {fy1: "324.00", fy2: "271.00", fy3: "234.20"}
+    lt_borrow:   {fy1: "85.00",  fy2: "92.00",  fy3: "98.00"}
+    st_liab:     {fy1: "192.00", fy2: "168.00", fy3: "144.00"}
+    total_eql:   {fy1: "601.00", fy2: "531.00", fy3: "476.20"}
+    ppe:         {fy1: "182.00", fy2: "164.00", fy3: "148.00"}
+    current_assets: {fy1: "419.00", fy2: "367.00", fy3: "328.20"}
+    total_assets: {fy1: "601.00", fy2: "531.00", fy3: "476.20"}
+
+# Company profile content
+profile:
+  about: "ABC Constructions Private Limited is a Bangalore-based civil engineering and construction company established in 2009. Over the past 16 years, we have executed civil works projects for central and state government bodies, public sector undertakings, and institutional clients across Karnataka and neighbouring states. Our core competencies are buildings, roads, parking infrastructure, water and sanitation works, and allied civil works."
+  head_name: "Rajeshwari M. Iyengar"
+  head_designation: "Managing Director"
+  industry_for_epf: "Construction — Civil Engineering Works"
+  additional_compliance: "Registered with Building and Other Construction Workers Welfare Board, Karnataka"
+  specialisations:
+    - "Reinforced Concrete Structures (Buildings up to G+5 storeys)"
+    - "Bituminous and Cement Concrete Roads"
+    - "Vehicle parking bays, paving, and allied facilities"
+    - "Water supply and sanitation infrastructure"
+    - "Boundary walls, security infrastructure, and sentry posts"
+  key_personnel:
+    - {name: "Rajeshwari M. Iyengar", designation: "Managing Director", qualification: "B.E. (Civil), MBA (IIM Bangalore)", experience_years: 22}
+    - {name: "Suresh Pratap Singh",   designation: "Project Director",  qualification: "B.E. (Civil), M.Tech (Structural)", experience_years: 18}
+    - {name: "Anand Subramanian",     designation: "Quality Manager",   qualification: "B.E. (Civil), ISO 9001 Lead Auditor", experience_years: 14}
+    - {name: "Manjunath K.",          designation: "Site Engineer (Sr.)", qualification: "B.E. (Civil)", experience_years: 11}
+  equipment:
+    - "JCB excavators (3 nos.) and tippers (4 nos.)"
+    - "Concrete mixers, vibrators, and pump (own fleet)"
+    - "Tower crane (rented for high-rise projects)"
+    - "Surveying and quality testing equipment (in-house)"
+    - "Bitumen paver and roller (rented for road works)"
+  notable_projects:
+    - {name: "Construction of Office Complex, BWSSB Annex Building", client: "Bangalore Water Supply Board", year: "2023", value: "₹4.85 cr"}
+    - {name: "Vehicle parking bay, BMTC Depot Bommanahalli", client: "Bangalore Metropolitan Transport Corporation", year: "2022", value: "₹3.42 cr"}
+    - {name: "Boundary wall and sentry post, KSRP Battalion HQ", client: "Karnataka State Reserve Police", year: "2022", value: "₹2.18 cr"}
+    - {name: "Internal road resurfacing, NIMHANS Campus", client: "NIMHANS Bangalore", year: "2021", value: "₹2.95 cr"}
+    - {name: "Operational parking bay, BSF Yelahanka Camp", client: "Border Security Force", year: "2020", value: "₹3.78 cr"}
+
+# Completion certificates — 5 projects within last 5 years, similar nature
+# Used to satisfy EXP-001 (3 similar projects in 5 years)
+completion_projects:
+  - short_name: "BWSSB-OFC-2023"
+    issuing_authority: "Bangalore Water Supply and Sewerage Board"
+    issuing_authority_seal: "BANGALORE WATER SUPPLY & SEWERAGE BOARD"
+    issuing_office: "Office of the Chief Engineer (Civil), BWSSB"
+    issuing_address: "Cauvery Bhawan, K.G. Road, Bangalore — 560009"
+    cert_ref_number: "BWSSB/CE/CIVIL/COMPL/2023/0241"
+    cert_issue_date_long: "08 February 2024"
+    work_description: "Construction of three-storey office annex building with internal electrical, plumbing, and finishing works for BWSSB headquarters."
+    location: "Bangalore"
+    client_office: "Bangalore Water Supply and Sewerage Board"
+    contract_value: 48500000     # ₹4.85 cr
+    executed_value: 48720000     # ₹4.87 cr (slight variation)
+    work_order_number: "BWSSB/WO/CIVIL/2022/0084"
+    work_order_date_long: "12 May 2022"
+    start_date_long: "01 June 2022"
+    stipulated_completion_long: "30 November 2023"
+    actual_completion_long: "15 December 2023"
+    scope_summary: "Civil structure works including foundation, RCC frame, masonry, plastering, flooring, electrical conduits, plumbing, and external finishing."
+    includes_components:
+      - "RCC framed structure, G+2 storeys, ~1,800 sq m built-up area"
+      - "External and internal plastering, flooring (vitrified tiles)"
+      - "Electrical conduiting, water supply and drainage works"
+      - "Aluminium-frame doors and windows"
+    quality_grade: "Satisfactory"
+    completion_remark: "within the stipulated time after a brief 15-day extension granted on account of monsoon-related delays"
+    signing_officer_name: "Eng. P. Anantha Padmanabhan"
+    signing_officer_designation: "Chief Engineer (Civil)"
+    signing_officer_phone: "+91 80 2294 5500"
+
+  - short_name: "BMTC-PARK-2022"
+    issuing_authority: "Bangalore Metropolitan Transport Corporation"
+    issuing_authority_seal: "BMTC · GOVERNMENT OF KARNATAKA"
+    issuing_office: "Office of the Executive Engineer, BMTC Civil Division"
+    issuing_address: "BMTC Central Office, Shanthi Nagar, Bangalore — 560027"
+    cert_ref_number: "BMTC/EE/CIVIL/COMPL/2022/0188"
+    cert_issue_date_long: "22 October 2022"
+    work_description: "Construction of vehicle parking bay with cement concrete paving, drainage, and security shed for BMTC Bommanahalli depot."
+    location: "Bommanahalli, Bangalore"
+    client_office: "Bangalore Metropolitan Transport Corporation"
+    contract_value: 34200000      # ₹3.42 cr
+    executed_value: 34850000      # ₹3.485 cr
+    work_order_number: "BMTC/CIV/WO/2021/0042"
+    work_order_date_long: "08 September 2021"
+    start_date_long: "01 October 2021"
+    stipulated_completion_long: "30 September 2022"
+    actual_completion_long: "10 October 2022"
+    scope_summary: "Site preparation, cement-concrete paving for parking bay (~6,500 sq m), drainage works, sentry post, and boundary wall."
+    includes_components:
+      - "M-30 grade cement concrete paving (~6,500 sq m)"
+      - "Storm water drains and sumps"
+      - "Sentry post (15 sq m, RCC structure)"
+      - "Compound wall (180 m length, 2.4 m height)"
+    quality_grade: "Good"
+    completion_remark: "within the stipulated time, with marginal delay of 10 days"
+    signing_officer_name: "Eng. Lokesh Hegde"
+    signing_officer_designation: "Executive Engineer (Civil)"
+
+  - short_name: "KSRP-WALL-2022"
+    issuing_authority: "Karnataka State Reserve Police"
+    issuing_authority_seal: "KARNATAKA STATE RESERVE POLICE"
+    issuing_office: "Office of the Commandant, KSRP 5th Battalion"
+    issuing_address: "Battalion HQ, Kommaghatta, Bangalore — 560060"
+    cert_ref_number: "KSRP/5BN/COMPL/2022/0012"
+    cert_issue_date_long: "15 March 2022"
+    work_description: "Construction of compound boundary wall with two sentry posts and entry gates at KSRP 5th Battalion Headquarters."
+    location: "Kommaghatta, Bangalore"
+    client_office: "Karnataka State Reserve Police"
+    contract_value: 21800000      # ₹2.18 cr
+    executed_value: 21800000
+    work_order_number: "KSRP/5BN/CIV/WO/2021/0007"
+    work_order_date_long: "10 June 2021"
+    start_date_long: "01 July 2021"
+    stipulated_completion_long: "31 January 2022"
+    actual_completion_long: "28 February 2022"
+    scope_summary: "Compound wall (1,200 m), two sentry posts, motorised vehicle gates, and access roads to gates."
+    includes_components:
+      - "Brick and RCC compound wall (3 m height, 1,200 m length)"
+      - "Sentry posts (2 nos., 12 sq m each)"
+      - "Motorised steel sliding gates (2 nos.)"
+      - "Approach roads to gates with concrete paving"
+    quality_grade: "Satisfactory"
+    completion_remark: "with a 30-day extension granted on account of land-handover delay"
+    signing_officer_name: "Sri. Manjunath Reddy, IPS"
+    signing_officer_designation: "Commandant, KSRP 5th Battalion"
+
+  - short_name: "NIMHANS-RD-2021"
+    issuing_authority: "National Institute of Mental Health and Neurosciences"
+    issuing_authority_seal: "NIMHANS · GOVERNMENT OF INDIA"
+    issuing_office: "Estate and Civil Maintenance Section, NIMHANS"
+    issuing_address: "Hosur Road, Bangalore — 560029"
+    cert_ref_number: "NIMHANS/EST/CIV/2021/COMPL/0098"
+    cert_issue_date_long: "20 December 2021"
+    work_description: "Resurfacing of internal roads (~3.2 km cumulative) including drainage, kerb-stones, and pedestrian footpaths within NIMHANS campus."
+    location: "Bangalore"
+    client_office: "NIMHANS, Bangalore"
+    contract_value: 29500000      # ₹2.95 cr
+    executed_value: 30200000      # ₹3.02 cr
+    work_order_number: "NIMHANS/CIV/WO/2020/0117"
+    work_order_date_long: "12 November 2020"
+    start_date_long: "01 December 2020"
+    stipulated_completion_long: "30 November 2021"
+    actual_completion_long: "10 December 2021"
+    scope_summary: "Bituminous resurfacing of campus internal roads, side drainage, kerb-stones, and pedestrian footpath in coloured cement concrete."
+    includes_components:
+      - "Bituminous concrete (BC) overlay (~3.2 km cumulative)"
+      - "Side drains and culverts (1.4 km)"
+      - "Kerb-stones and channel-stones"
+      - "Coloured cement concrete pedestrian footpath (~1.8 km)"
+    quality_grade: "Good"
+    completion_remark: "within the stipulated time"
+    signing_officer_name: "Eng. K. Padmavathi"
+    signing_officer_designation: "Estate Officer & Executive Engineer (Civil)"
+
+  - short_name: "BSF-PARK-2020"
+    issuing_authority: "Border Security Force"
+    issuing_authority_seal: "BSF · GOVERNMENT OF INDIA · MHA"
+    issuing_office: "Office of the Commandant, BSF Yelahanka"
+    issuing_address: "BSF Camp, Yelahanka, Bangalore — 560064"
+    cert_ref_number: "BSF/YK/CIV/COMPL/2020/0033"
+    cert_issue_date_long: "12 November 2020"
+    work_description: "Construction of operational vehicle parking bay with hardstand and ancillary security shed for BSF Yelahanka Camp."
+    location: "Yelahanka, Bangalore"
+    client_office: "Border Security Force"
+    contract_value: 37800000      # ₹3.78 cr
+    executed_value: 38100000      # ₹3.81 cr
+    work_order_number: "BSF/YK/CIV/WO/2019/0021"
+    work_order_date_long: "01 August 2019"
+    start_date_long: "01 September 2019"
+    stipulated_completion_long: "31 August 2020"
+    actual_completion_long: "30 October 2020"
+    scope_summary: "Cement concrete hardstand for vehicle parking, drainage, sentry shed, security lighting, and boundary fencing."
+    includes_components:
+      - "M-30 cement concrete hardstand (~7,200 sq m)"
+      - "Storm water drainage"
+      - "Sentry shed (~18 sq m)"
+      - "Security lighting and 2 m chain-link fencing"
+    quality_grade: "Satisfactory"
+    completion_remark: "with a 60-day extension granted on account of COVID-19 lockdown delays"
+    signing_officer_name: "Comdt. Vijay Kumar Sharma"
+    signing_officer_designation: "Commandant, BSF Yelahanka"

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="static/styles.css">
+<title>ISO 9001 Certificate — {{ bidder.name }}</title>
+</head>
+<body class="sans">
+
+<div class="cert-decorative">
+<div class="inner-border">
+
+<div style="text-align: center; margin-bottom: 16px;">
+  <div style="font-size: 16pt; font-weight: bold; color: #b8860b; letter-spacing: 2px;">{{ iso.certifying_body }}</div>
+  <div style="font-size: 9pt; color: #555; margin-top: 4px; font-style: italic;">{{ iso.body_tagline }}</div>
+  <div style="font-size: 8pt; color: #666; margin-top: 2px;">Accredited by {{ iso.accreditation_body }}</div>
+</div>
+
+<div class="cert-title-large">Certificate of Registration</div>
+
+<div style="text-align: center; font-size: 11pt; margin: 14px 0;">
+This is to certify that the Quality Management System of
+</div>
+
+<div style="text-align: center; font-size: 18pt; font-weight: bold; margin: 18px 0; color: #1a3a6a; padding: 10px 0; border-top: 1px solid #b8860b; border-bottom: 1px solid #b8860b;">
+{{ bidder.name }}
+</div>
+
+<div style="text-align: center; font-size: 10pt; margin-bottom: 14px; color: #444;">
+{{ bidder.address }}
+</div>
+
+<div style="text-align: center; font-size: 11pt; margin: 18px 0;">
+has been assessed and found to comply with the requirements of
+</div>
+
+<div style="text-align: center; font-size: 20pt; font-weight: bold; margin: 14px 0; color: #b8860b;">
+ISO 9001:{{ bidder.iso_version }}
+</div>
+
+<div style="text-align: center; font-size: 11pt; font-weight: bold; margin-bottom: 18px;">
+Quality Management Systems — Requirements
+</div>
+
+<div style="text-align: center; font-size: 10pt; margin: 18px 0; padding: 0 30px;">
+<b>Scope of Registration:</b><br>
+<i>{{ iso.scope }}</i>
+</div>
+
+<table style="width: 100%; margin-top: 24px; font-size: 10pt;">
+<tr>
+<td style="width: 33%; text-align: center;">
+  <div style="border-top: 1px solid #555; padding-top: 4px;">
+    <b>Certificate Number</b><br>
+    {{ iso.cert_number }}
+  </div>
+</td>
+<td style="width: 33%; text-align: center;">
+  <div style="border-top: 1px solid #555; padding-top: 4px;">
+    <b>Original Issue</b><br>
+    {{ iso.original_issue_long }}
+  </div>
+</td>
+<td style="width: 33%; text-align: center;">
+  <div style="border-top: 1px solid #555; padding-top: 4px;">
+    <b>Current Issue</b><br>
+    {{ iso.current_issue_long }}
+  </div>
+</td>
+</tr>
+<tr>
+<td colspan="3" style="text-align: center; padding-top: 14px;">
+  <b>Valid Until: <span style="color: #b8860b; font-size: 11pt;">{{ iso.valid_until_long }}</span></b>
+</td>
+</tr>
+</table>
+
+<div style="margin-top: 30px; display: flex; justify-content: space-between;">
+  <div style="text-align: center; width: 200px;">
+    <div style="border-bottom: 1px solid #000; height: 30px;"></div>
+    <div style="font-size: 9pt; margin-top: 4px;">{{ iso.signatory_1_name }}<br>{{ iso.signatory_1_title }}</div>
+  </div>
+  <div style="text-align: center; width: 200px;">
+    <div style="border-bottom: 1px solid #000; height: 30px;"></div>
+    <div style="font-size: 9pt; margin-top: 4px;">{{ iso.signatory_2_name }}<br>{{ iso.signatory_2_title }}</div>
+  </div>
+</div>
+
+<div style="margin-top: 20px; text-align: center; font-size: 8pt; color: #666;">
+This certificate remains the property of {{ iso.certifying_body }} and shall be returned upon request. To verify the validity of this certificate, please visit {{ iso.verify_url }} and quote certificate number {{ iso.cert_number }}.
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

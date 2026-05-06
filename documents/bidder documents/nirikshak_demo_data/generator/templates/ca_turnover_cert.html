@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="static/styles.css">
+<title>Turnover Certificate — {{ bidder.name }}</title>
+</head>
+<body>
+
+<div class="letterhead-formal">
+  <h1>{{ ca.firm_name | upper }}</h1>
+  <div class="tagline">Chartered Accountants</div>
+  <div class="address-line">
+    {{ ca.address }} &nbsp;|&nbsp; Tel: {{ ca.phone }}
+  </div>
+  <div class="address-line">
+    Firm Registration No: {{ ca.frn }} &nbsp;|&nbsp; Email: {{ ca.email }}
+  </div>
+</div>
+
+<div class="ref-line">
+  <div>Ref: {{ ca.firm_short }}/{{ submission_year }}/CERT/{{ bidder.short_code }}</div>
+  <div>Date: {{ submission_date_long }}</div>
+</div>
+
+<div class="doc-title">Certificate of Annual Turnover</div>
+
+<p>This is to certify that, on the basis of the audited books of account, financial statements, and other records of <b>{{ bidder.name }}</b>, having its registered office at {{ bidder.address }}, PAN <b>{{ bidder.pan }}</b>, GSTIN <b>{{ bidder.gstin }}</b>, the annual turnover (Gross Receipts from Operations) for the last three financial years is as follows:</p>
+
+<table class="formal" style="margin-top: 14px;">
+  <thead>
+    <tr>
+      <th style="width: 25%;">Financial Year</th>
+      <th>Annual Turnover (₹)</th>
+      <th>In Words</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for fy in financials.turnover_history %}
+    <tr>
+      <td><b>FY {{ fy.year }}</b></td>
+      <td style="text-align: right; font-family: 'Courier New', monospace;">₹ {{ fy.amount_formatted }}</td>
+      <td>{{ fy.amount_words }}</td>
+    </tr>
+    {% endfor %}
+    <tr style="background-color: #f0f4f9;">
+      <td><b>Average (3 years)</b></td>
+      <td style="text-align: right; font-family: 'Courier New', monospace;"><b>₹ {{ financials.turnover_avg_formatted }}</b></td>
+      <td><b>{{ financials.turnover_avg_words }}</b></td>
+    </tr>
+  </tbody>
+</table>
+
+<p style="margin-top: 18px;"><b>Net Worth</b> of {{ bidder.name }} as on {{ financials.networth_as_of }} is <b>₹{{ financials.networth_formatted }}</b> ({{ financials.networth_words }} only), as per the audited Balance Sheet.</p>
+
+<p>This certificate is issued at the specific request of the company for submission to government tendering authorities. The figures stated above have been verified against the audited financial statements signed by the company's directors and the previous statutory auditor's report.</p>
+
+<p>This certificate is valid for a period of 90 (ninety) days from the date of issue.</p>
+
+<div class="signature-block">
+  <div>
+    <div style="margin-bottom: 4px;">For <b>{{ ca.firm_name }}</b></div>
+    <div>Chartered Accountants</div>
+    <div style="margin-top: 4px;">FRN: {{ ca.frn }}</div>
+    <div class="spacer-md"></div>
+    <div class="signature-line">
+      <b>CA {{ ca.partner_name }}</b><br>
+      Partner<br>
+      M. No.: {{ ca.partner_mno }}<br>
+      UDIN: {{ ca.udin }}
+    </div>
+  </div>
+  <div class="stamp-area">
+    Firm<br>Seal
+  </div>
+</div>
+
+<p style="margin-top: 30px;" class="note-small">
+Place: {{ ca.place }}<br>
+Date: {{ submission_date_long }}
+</p>
+
+</body>
+</html>

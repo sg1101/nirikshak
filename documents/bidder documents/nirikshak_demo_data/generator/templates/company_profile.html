@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="static/styles.css">
+<title>Company Profile — {{ bidder.name }}</title>
+</head>
+<body>
+
+<div class="letterhead-formal">
+  <h1>{{ bidder.name | upper }}</h1>
+  <div class="tagline">{{ bidder.tagline }}</div>
+  <div class="address-line">{{ bidder.address }}</div>
+</div>
+
+<div class="doc-title">Company Profile</div>
+
+<h3 style="color: #1a3a6a;">About Us</h3>
+<p>{{ bidder.profile.about }}</p>
+
+<h3 style="color: #1a3a6a;">Corporate Information</h3>
+<table class="formal">
+  <tr><td style="width: 35%;"><b>Legal Name</b></td><td>{{ bidder.name }}</td></tr>
+  <tr><td><b>Constitution</b></td><td>{{ bidder.entity_type }}</td></tr>
+  <tr><td><b>Date of Incorporation</b></td><td>{{ bidder.date_of_incorporation }}</td></tr>
+  <tr><td><b>CIN</b></td><td>{{ bidder.cin }}</td></tr>
+  <tr><td><b>PAN</b></td><td>{{ bidder.pan }}</td></tr>
+  <tr><td><b>GSTIN</b></td><td>{{ bidder.gstin }}</td></tr>
+  <tr><td><b>Registered Office</b></td><td>{{ bidder.address }}</td></tr>
+  <tr><td><b>Head of the Organisation</b></td><td>{{ bidder.profile.head_name }}, {{ bidder.profile.head_designation }}</td></tr>
+  <tr><td><b>Authorised Signatory</b></td><td>{{ bidder.authorised_signatory }}, {{ bidder.signatory_designation }}</td></tr>
+  <tr><td><b>Banker</b></td><td>{{ bidder.bank_name }}, {{ bidder.bank_branch }}</td></tr>
+</table>
+
+<h3 style="color: #1a3a6a;">Areas of Specialisation</h3>
+<ul>
+{% for spec in bidder.profile.specialisations %}
+  <li>{{ spec }}</li>
+{% endfor %}
+</ul>
+
+<h3 style="color: #1a3a6a;">Key Personnel</h3>
+<table class="formal">
+  <thead>
+    <tr><th>Name</th><th>Designation</th><th>Qualification</th><th>Experience</th></tr>
+  </thead>
+  <tbody>
+    {% for person in bidder.profile.key_personnel %}
+    <tr>
+      <td>{{ person.name }}</td>
+      <td>{{ person.designation }}</td>
+      <td>{{ person.qualification }}</td>
+      <td>{{ person.experience_years }} years</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h3 style="color: #1a3a6a;">Plant, Machinery, and Equipment</h3>
+<p>The company maintains a full complement of construction and project execution equipment, including:</p>
+<ul>
+{% for equip in bidder.profile.equipment %}
+  <li>{{ equip }}</li>
+{% endfor %}
+</ul>
+
+<h3 style="color: #1a3a6a;">Notable Past Projects</h3>
+<table class="formal">
+  <thead>
+    <tr><th>Project</th><th>Client</th><th>Year</th><th>Value (₹)</th></tr>
+  </thead>
+  <tbody>
+    {% for proj in bidder.profile.notable_projects %}
+    <tr>
+      <td>{{ proj.name }}</td>
+      <td>{{ proj.client }}</td>
+      <td>{{ proj.year }}</td>
+      <td style="text-align: right; font-family: 'Courier New', monospace;">{{ proj.value }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<h3 style="color: #1a3a6a;">Quality, Safety, and Compliance</h3>
+<p>The company is certified under ISO 9001:{{ bidder.iso_version }} for Quality Management Systems. We maintain strict adherence to all applicable statutory requirements, including:</p>
+<ul>
+  <li>GST Registration ({{ bidder.gstin }})</li>
+  <li>EPF and ESI compliance</li>
+  <li>Labour welfare compliance under the Building and Other Construction Workers Act</li>
+  <li>Environmental clearance norms where applicable</li>
+  <li>{{ bidder.profile.additional_compliance }}</li>
+</ul>
+
+<h3 style="color: #1a3a6a;">Contact</h3>
+<p>
+For queries relating to this submission, please contact:<br>
+<b>{{ bidder.authorised_signatory }}</b>, {{ bidder.signatory_designation }}<br>
+Tel: {{ bidder.phone }} &nbsp;|&nbsp; Email: {{ bidder.email }}
+</p>
+
+</body>
+</html>

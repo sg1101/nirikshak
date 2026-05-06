@@ -1,0 +1,262 @@
+# Bidder 02 — clearly NotEligible
+# FAILS FIN-001: average turnover ₹2.8 cr (below ₹5 cr threshold)
+# Has GST + ISO + 4 completion certs, but turnover gates him out.
+# This is what the demo shows in the "3 ineligible" segment with the cited reason
+# "Turnover ₹2.8 cr < ₹5 cr threshold per FIN-001, evidenced by CA_certificate.pdf p.1"
+
+short_code: "DEF"
+name: "Devi Constructions Private Limited"
+trade_name: "Devi Constructions"
+tagline: "Civil Contractors — Commercial & Institutional Buildings"
+entity_type: "Private Limited Company"
+date_of_incorporation: "08 January 2015"
+address: "No. 18, 2nd Main Road, Vyalikaval, Bangalore — 560003, Karnataka"
+place: "Bangalore"
+phone: "+91 80 4555 7821"
+email: "info@deviconstructions.in"
+
+pan: "AAFCD2587E"
+gstin: "29AAFCD2587E1Z7"
+cin: "U45200KA2015PTC078421"
+
+bank_name: "Canara Bank"
+bank_branch: "Vyalikaval Branch"
+bank_address: "Ground Floor, Janardan Towers, Margosa Road, Vyalikaval, Bangalore — 560003"
+bank_ifsc: "CNRB0001824"
+bank_phone: "+91 80 2336 8421"
+
+authorised_signatory: "Devi Prasad Reddy"
+signatory_designation: "Director"
+
+iso_version: "2015"
+iso:
+  certifying_body: "TÜV India Pvt. Ltd."
+  body_tagline: "Quality through Trust"
+  accreditation_body: "National Accreditation Board for Certification Bodies (NABCB)"
+  scope: "Construction of civil works, buildings, and allied infrastructure for commercial and institutional clients."
+  cert_number: "TUV-IN-15-QMS-12482"
+  original_issue_long: "20 February 2020"
+  current_issue_long: "20 February 2024"
+  valid_until_long: "19 February 2027"
+  signatory_1_name: "Aditya Bhatnagar"
+  signatory_1_title: "Lead Auditor"
+  signatory_2_name: "TÜV India Pvt. Ltd."
+  signatory_2_title: "Authorised Signatory"
+  verify_url: "tuv-india.com/verify"
+
+ca:
+  firm_name: "Suresh Babu & Co."
+  firm_short: "SB&Co"
+  address: "Suite 304, Trinity Plaza, Cunningham Road, Bangalore — 560052"
+  phone: "+91 80 2238 7724"
+  email: "audit@sureshbabuandco.com"
+  frn: "012845S"
+  partner_name: "G. Suresh Babu"
+  partner_mno: "224187"
+  udin: "25224187BHQVNK7821"
+  place: "Bangalore"
+
+gst_date_of_liability: "15 January 2018"
+gst_valid_from: "15 January 2018"
+gst_centre: "Bangalore North"
+gst_state_jur: "Bangalore — Vyalikaval Range"
+gst_officer:
+  name: "B. Sundararajan"
+  office: "Office of the Superintendent of Central Tax, Vyalikaval Range, Bangalore"
+
+epf_office: "Bangalore Regional Office"
+epf_code: "KN/BNG/0078421"
+epf_date_of_coverage: "01 February 2016"
+epf_reg_date: "10 February 2016"
+epf_signing_officer: "M. Krishnamurthy"
+esi_office: "Bangalore Sub-Regional Office"
+esi_code: "53000784210000999"
+esi_date_of_coverage: "01 March 2016"
+esi_reg_date: "08 March 2016"
+esi_signing_officer: "P. Saraswathi"
+
+cpwd_class: "III"
+cpwd_class_full: "Class III Civil Contractor"
+cpwd_category: "Civil Engineering Works (Building & Allied Civil)"
+cpwd_tender_limit_formatted: "5,00,00,000"
+cpwd_tender_limit_words: "Rupees Five Crore"
+cpwd_original_enlist_date: "15 May 2018"
+cpwd_last_renewal: "20 May 2024"
+cpwd_valid_until: "19 May 2027"
+cpwd_enlist_date: "20 May 2024"
+cpwd_authority:
+  zone_office: "CPWD Bangalore Central Zone"
+  zone_short: "BCZ"
+  enlisting_authority: "Superintending Engineer, CPWD Bangalore Central Zone"
+  signing_officer: "Eng. Anand Sharma"
+  signing_designation: "Superintending Engineer"
+  place: "Bangalore"
+
+bg_number: "CNRB/BG/2025/001824"
+bg_date_long: "22 April 2025"
+bg_valid_until: "10 December 2025"
+bg_signing_officer: "S. Rajashekar"
+bg_signing_emp_code: "CNRB/BLR/00892"
+bg_pa_number: "PA/CNRB/2024/00428"
+
+submission_year: 2025
+submission_date_long: "28 April 2025"
+fy_minus_1: "2024-25"
+fy_minus_2: "2023-24"
+fy_minus_3: "2022-23"
+num_completion_certs: 4
+
+# CRITICAL: turnover BELOW ₹5 cr threshold — this fails FIN-001
+# 3-year average = (3.2 + 2.85 + 2.4) / 3 = 2.82 cr ← FAILS
+financials:
+  turnover_history:
+    - year: "2024-25"
+      amount: 32000000     # ₹3.20 cr
+    - year: "2023-24"
+      amount: 28500000     # ₹2.85 cr
+    - year: "2022-23"
+      amount: 24000000     # ₹2.40 cr
+  networth: 14200000       # ₹1.42 cr
+  networth_as_of: "31 March 2025"
+  pl:
+    revenue:    {fy1: "320.00", fy2: "285.00", fy3: "240.00"}
+    other_income: {fy1: "3.20",   fy2: "2.40",   fy3: "1.80"}
+    total_income: {fy1: "323.20", fy2: "287.40", fy3: "241.80"}
+    materials:   {fy1: "212.40", fy2: "192.50", fy3: "162.20"}
+    employee:    {fy1: "48.20",  fy2: "42.10",  fy3: "36.50"}
+    finance:     {fy1: "12.40",  fy2: "10.80",  fy3: "9.20"}
+    depreciation: {fy1: "14.50", fy2: "12.80",  fy3: "11.40"}
+    other_exp:   {fy1: "22.10",  fy2: "18.50",  fy3: "15.40"}
+    total_expenses: {fy1: "309.60", fy2: "276.70", fy3: "234.70"}
+    pbt:         {fy1: "13.60",  fy2: "10.70",  fy3: "7.10"}
+    tax:         {fy1: "3.80",   fy2: "2.90",   fy3: "1.90"}
+    pat:         {fy1: "9.80",   fy2: "7.80",   fy3: "5.20"}
+  bs:
+    share_cap:   {fy1: "50.00",  fy2: "50.00",  fy3: "50.00"}
+    reserves:    {fy1: "92.00",  fy2: "82.20",  fy3: "74.40"}
+    networth:    {fy1: "142.00", fy2: "132.20", fy3: "124.40"}
+    lt_borrow:   {fy1: "32.00",  fy2: "38.00",  fy3: "42.00"}
+    st_liab:     {fy1: "82.00",  fy2: "72.00",  fy3: "64.00"}
+    total_eql:   {fy1: "256.00", fy2: "242.20", fy3: "230.40"}
+    ppe:         {fy1: "78.00",  fy2: "72.00",  fy3: "68.00"}
+    current_assets: {fy1: "178.00", fy2: "170.20", fy3: "162.40"}
+    total_assets: {fy1: "256.00", fy2: "242.20", fy3: "230.40"}
+
+profile:
+  about: "Devi Constructions Private Limited is a Bangalore-based civil contractor specialising in commercial and institutional building works. Established in 2015, we have grown steadily and currently execute 4-6 medium-sized civil projects per year for both private and government clients."
+  head_name: "Devi Prasad Reddy"
+  head_designation: "Director"
+  industry_for_epf: "Construction — Civil Engineering Works"
+  additional_compliance: "Registered with Karnataka Building and Other Construction Workers Welfare Board"
+  specialisations:
+    - "Commercial buildings (G+3 to G+5)"
+    - "Institutional and educational facility construction"
+    - "Internal road works and paving"
+    - "Renovation and retrofitting of older structures"
+  key_personnel:
+    - {name: "Devi Prasad Reddy",  designation: "Director",         qualification: "B.E. (Civil), MBA",        experience_years: 16}
+    - {name: "Lakshmana Rao",      designation: "Project Manager",  qualification: "B.E. (Civil)",             experience_years: 12}
+    - {name: "Padmaja Iyer",       designation: "Quality Engineer", qualification: "B.E. (Civil), ISO Aud.",   experience_years: 8}
+  equipment:
+    - "JCB excavator (1 no.) and tipper (2 nos.)"
+    - "Concrete mixer and vibrators"
+    - "Surveying and quality testing tools (in-house)"
+  notable_projects:
+    - {name: "Office building, Karnataka Cooperative Bank Annex", client: "KSCAB", year: "2023", value: "₹2.65 cr"}
+    - {name: "Hostel block, Government Polytechnic", client: "Department of Technical Education, Karnataka", year: "2022", value: "₹1.95 cr"}
+    - {name: "Compound wall, Government High School", client: "Department of Education, Karnataka", year: "2021", value: "₹0.85 cr"}
+    - {name: "Renovation, BBMP Ward Office Yelahanka", client: "BBMP", year: "2020", value: "₹1.40 cr"}
+
+# 4 completion certs (only 4 because turnover is the disqualifier — but they have experience)
+completion_projects:
+  - short_name: "KSCAB-OFC-2023"
+    issuing_authority: "Karnataka State Cooperative Apex Bank"
+    issuing_authority_seal: "KARNATAKA STATE COOPERATIVE APEX BANK"
+    issuing_office: "Office of the Estate Officer, KSCAB"
+    issuing_address: "No. 1, Pampamahakavi Road, Chamrajpet, Bangalore — 560018"
+    cert_ref_number: "KSCAB/EST/COMPL/2023/0048"
+    cert_issue_date_long: "12 March 2024"
+    work_description: "Construction of two-storey office annex building for KSCAB headquarters."
+    location: "Bangalore"
+    client_office: "Karnataka State Cooperative Apex Bank Limited"
+    contract_value: 26500000
+    executed_value: 26800000
+    work_order_number: "KSCAB/CIV/WO/2022/0019"
+    work_order_date_long: "01 August 2022"
+    start_date_long: "15 August 2022"
+    stipulated_completion_long: "30 November 2023"
+    actual_completion_long: "20 December 2023"
+    scope_summary: "RCC frame office building (~1,200 sq m), interior finishing, electricals, plumbing."
+    quality_grade: "Satisfactory"
+    completion_remark: "with a marginal delay of 20 days"
+    signing_officer_name: "Sri. Krishnan Iyer"
+    signing_officer_designation: "Estate Officer"
+
+  - short_name: "POLYT-HOSTEL-2022"
+    issuing_authority: "Department of Technical Education, Karnataka"
+    issuing_authority_seal: "GOVT. OF KARNATAKA · DTE"
+    issuing_office: "Office of the Principal, Government Polytechnic Yelahanka"
+    issuing_address: "Yelahanka, Bangalore — 560064"
+    cert_ref_number: "DTE/GPT/CIV/COMPL/2022/0017"
+    cert_issue_date_long: "08 December 2022"
+    work_description: "Construction of one-storey hostel block (40-bed capacity) for Government Polytechnic, Yelahanka."
+    location: "Yelahanka, Bangalore"
+    client_office: "Department of Technical Education, Karnataka"
+    contract_value: 19500000
+    executed_value: 19800000
+    work_order_number: "DTE/GPT/WO/2021/0008"
+    work_order_date_long: "20 March 2021"
+    start_date_long: "01 April 2021"
+    stipulated_completion_long: "30 September 2022"
+    actual_completion_long: "20 November 2022"
+    scope_summary: "Hostel building (~700 sq m), kitchen-mess, ablution block, water and drainage works."
+    quality_grade: "Satisfactory"
+    completion_remark: "with a 50-day extension granted"
+    signing_officer_name: "Smt. Nirmala Devi"
+    signing_officer_designation: "Principal, Government Polytechnic Yelahanka"
+
+  - short_name: "BBMP-RENOV-2020"
+    issuing_authority: "Bruhat Bengaluru Mahanagara Palike"
+    issuing_authority_seal: "BBMP · GOVERNMENT OF KARNATAKA"
+    issuing_office: "Office of the Executive Engineer, BBMP East Zone"
+    issuing_address: "BBMP East Zone Office, Mahadevapura, Bangalore — 560048"
+    cert_ref_number: "BBMP/EAST/CIV/COMPL/2020/0182"
+    cert_issue_date_long: "30 December 2020"
+    work_description: "Renovation and refurbishment of BBMP Ward Office, Yelahanka — including roof rework, plumbing, electrical, painting."
+    location: "Yelahanka, Bangalore"
+    client_office: "Bruhat Bengaluru Mahanagara Palike"
+    contract_value: 14000000
+    executed_value: 14150000
+    work_order_number: "BBMP/EAST/CIV/WO/2020/0042"
+    work_order_date_long: "12 February 2020"
+    start_date_long: "15 March 2020"
+    stipulated_completion_long: "30 September 2020"
+    actual_completion_long: "20 December 2020"
+    scope_summary: "Renovation of existing two-storey ward office: roof slab repair, plumbing, electricals, painting, flooring."
+    quality_grade: "Satisfactory"
+    completion_remark: "with substantial delay due to COVID-19 lockdown"
+    signing_officer_name: "Eng. Manjunath Kumar"
+    signing_officer_designation: "Executive Engineer, BBMP East Zone"
+
+  - short_name: "GHS-WALL-2021"
+    issuing_authority: "Department of Public Education, Karnataka"
+    issuing_authority_seal: "GOVT. OF KARNATAKA · DPE"
+    issuing_office: "Office of the Block Education Officer, Bangalore North"
+    issuing_address: "Block Education Office, Yelahanka, Bangalore — 560064"
+    cert_ref_number: "DPE/BLR-N/CIV/COMPL/2021/0028"
+    cert_issue_date_long: "10 March 2022"
+    work_description: "Construction of compound wall (650 m) and entrance gate for Government High School, Yelahanka."
+    location: "Yelahanka, Bangalore"
+    client_office: "Department of Public Education, Karnataka"
+    contract_value: 8500000
+    executed_value: 8500000
+    work_order_number: "DPE/BLR-N/WO/2021/0006"
+    work_order_date_long: "01 July 2021"
+    start_date_long: "15 July 2021"
+    stipulated_completion_long: "30 January 2022"
+    actual_completion_long: "20 February 2022"
+    scope_summary: "Brick and RCC compound wall (650 m), motorised entry gate, name board."
+    quality_grade: "Good"
+    completion_remark: "with marginal delay of 20 days"
+    signing_officer_name: "Sri. Ramesh Bhat"
+    signing_officer_designation: "Block Education Officer, Bangalore North"

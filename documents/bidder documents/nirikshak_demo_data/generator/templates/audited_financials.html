@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="static/styles.css">
+<title>Audited Financial Statements — {{ bidder.name }}</title>
+</head>
+<body>
+
+<div class="letterhead-formal">
+  <h1>{{ bidder.name | upper }}</h1>
+  <div class="address-line">{{ bidder.address }}</div>
+  <div class="address-line">CIN: {{ bidder.cin }} &nbsp;|&nbsp; PAN: {{ bidder.pan }}</div>
+</div>
+
+<div class="doc-title">Audited Financial Statements — Summary</div>
+<div class="doc-subtitle">For the Financial Years {{ fy_minus_3 }}, {{ fy_minus_2 }}, and {{ fy_minus_1 }}</div>
+
+<p style="font-size: 9pt; font-style: italic; color: #555;">[This summary document accompanies the full audited financial statements signed by the statutory auditor and approved by the Board of Directors. The full statements are attached separately.]</p>
+
+<h3 style="color: #1a3a6a; margin-top: 24px;">Statement of Profit and Loss — Summary (₹ in Lakhs)</h3>
+
+<table class="financial">
+<thead>
+  <tr>
+    <th>Particulars</th>
+    <th class="amount">FY {{ fy_minus_1 }}</th>
+    <th class="amount">FY {{ fy_minus_2 }}</th>
+    <th class="amount">FY {{ fy_minus_3 }}</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><b>Revenue from Operations</b></td>
+    <td class="amount"><b>{{ financials.pl.revenue.fy1 }}</b></td>
+    <td class="amount"><b>{{ financials.pl.revenue.fy2 }}</b></td>
+    <td class="amount"><b>{{ financials.pl.revenue.fy3 }}</b></td>
+  </tr>
+  <tr>
+    <td>Other Income</td>
+    <td class="amount">{{ financials.pl.other_income.fy1 }}</td>
+    <td class="amount">{{ financials.pl.other_income.fy2 }}</td>
+    <td class="amount">{{ financials.pl.other_income.fy3 }}</td>
+  </tr>
+  <tr class="total">
+    <td>Total Income</td>
+    <td class="amount">{{ financials.pl.total_income.fy1 }}</td>
+    <td class="amount">{{ financials.pl.total_income.fy2 }}</td>
+    <td class="amount">{{ financials.pl.total_income.fy3 }}</td>
+  </tr>
+  <tr>
+    <td>Cost of Materials Consumed</td>
+    <td class="amount">{{ financials.pl.materials.fy1 }}</td>
+    <td class="amount">{{ financials.pl.materials.fy2 }}</td>
+    <td class="amount">{{ financials.pl.materials.fy3 }}</td>
+  </tr>
+  <tr>
+    <td>Employee Benefits Expense</td>
+    <td class="amount">{{ financials.pl.employee.fy1 }}</td>
+    <td class="amount">{{ financials.pl.employee.fy2 }}</td>
+    <td class="amount">{{ financials.pl.employee.fy3 }}</td>
+  </tr>
+  <tr>
+    <td>Finance Costs</td>
+    <td class="amount">{{ financials.pl.finance.fy1 }}</td>
+    <td class="amount">{{ financials.pl.finance.fy2 }}</td>
+    <td class="amount">{{ financials.pl.finance.fy3 }}</td>
+  </tr>
+  <tr>
+    <td>Depreciation and Amortisation</td>
+    <td class="amount">{{ financials.pl.depreciation.fy1 }}</td>
+    <td class="amount">{{ financials.pl.depreciation.fy2 }}</td>
+    <td class="amount">{{ financials.pl.depreciation.fy3 }}</td>
+  </tr>
+  <tr>
+    <td>Other Expenses</td>
+    <td class="amount">{{ financials.pl.other_exp.fy1 }}</td>
+    <td class="amount">{{ financials.pl.other_exp.fy2 }}</td>
+    <td class="amount">{{ financials.pl.other_exp.fy3 }}</td>
+  </tr>
+  <tr class="total">
+    <td>Total Expenses</td>
+    <td class="amount">{{ financials.pl.total_expenses.fy1 }}</td>
+    <td class="amount">{{ financials.pl.total_expenses.fy2 }}</td>
+    <td class="amount">{{ financials.pl.total_expenses.fy3 }}</td>
+  </tr>
+  <tr>
+    <td><b>Profit Before Tax</b></td>
+    <td class="amount"><b>{{ financials.pl.pbt.fy1 }}</b></td>
+    <td class="amount"><b>{{ financials.pl.pbt.fy2 }}</b></td>
+    <td class="amount"><b>{{ financials.pl.pbt.fy3 }}</b></td>
+  </tr>
+  <tr>
+    <td>Tax Expense</td>
+    <td class="amount">{{ financials.pl.tax.fy1 }}</td>
+    <td class="amount">{{ financials.pl.tax.fy2 }}</td>
+    <td class="amount">{{ financials.pl.tax.fy3 }}</td>
+  </tr>
+  <tr class="total">
+    <td><b>Profit After Tax</b></td>
+    <td class="amount"><b>{{ financials.pl.pat.fy1 }}</b></td>
+    <td class="amount"><b>{{ financials.pl.pat.fy2 }}</b></td>
+    <td class="amount"><b>{{ financials.pl.pat.fy3 }}</b></td>
+  </tr>
+</tbody>
+</table>
+
+<h3 style="color: #1a3a6a; margin-top: 24px;">Balance Sheet — Summary (₹ in Lakhs, as at 31 March)</h3>
+
+<table class="financial">
+<thead>
+  <tr>
+    <th>Particulars</th>
+    <th class="amount">FY {{ fy_minus_1 }}</th>
+    <th class="amount">FY {{ fy_minus_2 }}</th>
+    <th class="amount">FY {{ fy_minus_3 }}</th>
+  </tr>
+</thead>
+<tbody>
+  <tr><td colspan="4" style="background-color: #e8eef5;"><b>EQUITY AND LIABILITIES</b></td></tr>
+  <tr>
+    <td>Share Capital</td>
+    <td class="amount">{{ financials.bs.share_cap.fy1 }}</td>
+    <td class="amount">{{ financials.bs.share_cap.fy2 }}</td>
+    <td class="amount">{{ financials.bs.share_cap.fy3 }}</td>
+  </tr>
+  <tr>
+    <td>Reserves and Surplus</td>
+    <td class="amount">{{ financials.bs.reserves.fy1 }}</td>
+    <td class="amount">{{ financials.bs.reserves.fy2 }}</td>
+    <td class="amount">{{ financials.bs.reserves.fy3 }}</td>
+  </tr>
+  <tr class="total">
+    <td><b>Shareholders' Funds (Net Worth)</b></td>
+    <td class="amount"><b>{{ financials.bs.networth.fy1 }}</b></td>
+    <td class="amount"><b>{{ financials.bs.networth.fy2 }}</b></td>
+    <td class="amount"><b>{{ financials.bs.networth.fy3 }}</b></td>
+  </tr>
+  <tr>
+    <td>Long-term Borrowings</td>
+    <td class="amount">{{ financials.bs.lt_borrow.fy1 }}</td>
+    <td class="amount">{{ financials.bs.lt_borrow.fy2 }}</td>
+    <td class="amount">{{ financials.bs.lt_borrow.fy3 }}</td>
+  </tr>
+  <tr>
+    <td>Short-term Borrowings and Current Liabilities</td>
+    <td class="amount">{{ financials.bs.st_liab.fy1 }}</td>
+    <td class="amount">{{ financials.bs.st_liab.fy2 }}</td>
+    <td class="amount">{{ financials.bs.st_liab.fy3 }}</td>
+  </tr>
+  <tr class="total">
+    <td>Total Equity and Liabilities</td>
+    <td class="amount">{{ financials.bs.total_eql.fy1 }}</td>
+    <td class="amount">{{ financials.bs.total_eql.fy2 }}</td>
+    <td class="amount">{{ financials.bs.total_eql.fy3 }}</td>
+  </tr>
+  <tr><td colspan="4" style="background-color: #e8eef5;"><b>ASSETS</b></td></tr>
+  <tr>
+    <td>Property, Plant and Equipment (Net)</td>
+    <td class="amount">{{ financials.bs.ppe.fy1 }}</td>
+    <td class="amount">{{ financials.bs.ppe.fy2 }}</td>
+    <td class="amount">{{ financials.bs.ppe.fy3 }}</td>
+  </tr>
+  <tr>
+    <td>Current Assets</td>
+    <td class="amount">{{ financials.bs.current_assets.fy1 }}</td>
+    <td class="amount">{{ financials.bs.current_assets.fy2 }}</td>
+    <td class="amount">{{ financials.bs.current_assets.fy3 }}</td>
+  </tr>
+  <tr class="total">
+    <td>Total Assets</td>
+    <td class="amount">{{ financials.bs.total_assets.fy1 }}</td>
+    <td class="amount">{{ financials.bs.total_assets.fy2 }}</td>
+    <td class="amount">{{ financials.bs.total_assets.fy3 }}</td>
+  </tr>
+</tbody>
+</table>
+
+<h3 style="color: #1a3a6a; margin-top: 24px;">Auditor's Statement</h3>
+<p style="font-size: 10pt;">We, <b>{{ ca.firm_name }}</b>, Chartered Accountants (Firm Registration Number: {{ ca.frn }}), have audited the accompanying financial statements of <b>{{ bidder.name }}</b> for the financial years stated above. In our opinion, and to the best of our information and according to the explanations given to us, the said accounts give a true and fair view of the state of affairs of the Company as at the close of each financial year, and of its profit/loss for the year ended on that date.</p>
+
+<div class="signature-block">
+<div>
+  <div>For <b>{{ ca.firm_name }}</b></div>
+  <div>Chartered Accountants</div>
+  <div>FRN: {{ ca.frn }}</div>
+  <div class="spacer-md"></div>
+  <div class="signature-line">
+    <b>CA {{ ca.partner_name }}</b><br>
+    Partner — M. No. {{ ca.partner_mno }}
+  </div>
+</div>
+<div class="stamp-area">Firm<br>Seal</div>
+</div>
+
+</body>
+</html>

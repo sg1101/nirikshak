@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="static/styles.css">
+<title>Tender Acceptance Letter — {{ bidder.name }}</title>
+</head>
+<body>
+
+<div class="letterhead-formal">
+  <h1>{{ bidder.name | upper }}</h1>
+  <div class="address-line">{{ bidder.address }}</div>
+</div>
+
+<div class="ref-line">
+  <div>Ref: {{ bidder.short_code }}/ACC/{{ tender.short_code }}/{{ submission_year }}</div>
+  <div>Date: {{ submission_date_long }}</div>
+</div>
+
+<div class="doc-title">Tender Acceptance Letter</div>
+
+<p><b>To,</b><br>
+The {{ tender.designation_for_bg }},<br>
+{{ tender.procuring_authority }},<br>
+{{ tender.authority_address }}</p>
+
+<p><b>Subject:</b> Acceptance of terms and conditions of Tender No. <b>{{ tender.tender_number }}</b> — "{{ tender.title }}"</p>
+
+<p>Sir/Madam,</p>
+
+<p>1. I/We have downloaded / obtained the tender document(s) for the above-mentioned tender from the Central Public Procurement Portal as per your advertisement, given in the above-mentioned website(s).</p>
+
+<p>2. I/We hereby certify that I/we have read and fully understood the entire tender document from page 1 to the last page (i.e. all sections including General Conditions, Special Conditions, Technical Specifications, Bill of Quantities, Annexures, Pre-Bid clarifications, Corrigenda, etc.), and I/we shall abide by the terms and conditions / clauses contained therein.</p>
+
+<p>3. The corrigendum(s) issued from time to time by your Department / Office have also been taken into consideration while submitting this acceptance letter.</p>
+
+<p>4. I/We hereby unconditionally accept the tender conditions of the above-mentioned tender document in entirety. I/We confirm that no condition has been added by us that has not been allowed by the tender document.</p>
+
+<p>5. I/We declare that I/we have not been blacklisted or debarred by any Government Department, Public Sector Undertaking, or autonomous body either directly or indirectly. There is no vigilance, CBI, or judicial investigation pending against the firm or its principals that would have a material bearing on this contract.</p>
+
+<p>6. I/We certify that all information furnished by me/us in respect of the fulfilment of eligibility conditions of this tender is true and complete, and is supported by attested copies of the relevant documents enclosed with this submission. In case any information is found to be false at any stage, the bid shall be liable to be rejected and the EMD forfeited, without any prejudice to other actions that may be taken under law.</p>
+
+<p>7. I/We confirm that no material change has occurred in the company's financial standing, technical capability, or organisational structure that would affect our ability to perform the contract since the date of the documents furnished as part of this submission.</p>
+
+<p>Yours faithfully,</p>
+
+<p>For <b>{{ bidder.name }}</b></p>
+
+<div class="signature-block">
+  <div>
+    <div class="spacer-md"></div>
+    <div class="signature-line" style="width: 240px;">
+      ({{ bidder.authorised_signatory }})<br>
+      {{ bidder.signatory_designation }}<br>
+      Authorised Signatory<br>
+      Place: {{ bidder.place }} &nbsp;|&nbsp; Date: {{ submission_date_long }}
+    </div>
+  </div>
+  <div class="stamp-area">Company<br>Seal</div>
+</div>
+
+</body>
+</html>

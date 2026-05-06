@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="static/styles.css">
+<title>Cover Letter — {{ bidder.name }}</title>
+</head>
+<body>
+
+<div class="letterhead-formal">
+  <h1>{{ bidder.name | upper }}</h1>
+  <div class="tagline">{{ bidder.tagline }}</div>
+  <div class="address-line">
+    {{ bidder.address }} &nbsp;|&nbsp; Tel: {{ bidder.phone }} &nbsp;|&nbsp; Email: {{ bidder.email }}
+  </div>
+  <div class="address-line">
+    GSTIN: {{ bidder.gstin }} &nbsp;|&nbsp; PAN: {{ bidder.pan }} &nbsp;|&nbsp; CIN: {{ bidder.cin }}
+  </div>
+</div>
+
+<div class="ref-line">
+  <div>Ref: {{ bidder.short_code }}/BID/{{ tender.short_code }}/{{ submission_year }}</div>
+  <div>Date: {{ submission_date_long }}</div>
+</div>
+
+<div style="margin-top: 14px;">
+<b>To,</b><br>
+The Procurement Officer,<br>
+{{ tender.procuring_authority }},<br>
+{{ tender.authority_address }}
+</div>
+
+<div class="doc-title">Bid Submission Letter</div>
+
+<p><b>Subject:</b> Submission of Bid against Tender No. <b>{{ tender.tender_number }}</b> for "{{ tender.title }}"</p>
+
+<p>Sir/Madam,</p>
+
+<p>With reference to the above-mentioned Notice Inviting Tender (NIT) published on the Central Public Procurement Portal on {{ tender.publication_date_long }}, we, <b>{{ bidder.name }}</b>, a {{ bidder.entity_type }} duly incorporated under the Companies Act with our registered office at {{ bidder.address }}, are pleased to submit our bid for the work referenced above.</p>
+
+<p>We confirm that:</p>
+
+<ol>
+  <li>We have carefully read and understood all the terms and conditions, technical specifications, and eligibility criteria as set out in the tender document, and we accept all such terms unconditionally.</li>
+  <li>The information furnished in this submission, including all supporting documents, is true and correct to the best of our knowledge and belief.</li>
+  <li>Earnest Money Deposit (EMD) of <b>₹{{ tender.emd_amount_words }}</b> (Rupees {{ tender.emd_amount_text }} only) has been furnished as a Bank Guarantee from {{ bidder.bank_name }}, {{ bidder.bank_branch }}, vide BG No. {{ bidder.bg_number }} dated {{ bidder.bg_date_long }}.</li>
+  <li>We have the requisite financial capability, technical expertise, and prior experience as detailed in the supporting documents enclosed.</li>
+  <li>Our quoted price is valid for a period of 180 days from the date of bid opening.</li>
+  <li>We have not been blacklisted by any government department, public sector undertaking, or autonomous body, and there is no pending litigation that would materially affect our ability to perform the contract.</li>
+</ol>
+
+<p><b>List of enclosures:</b></p>
+<ol style="margin-top: 4px;">
+  <li>Company Profile and Brochure</li>
+  <li>Audited Financial Statements (FY {{ fy_minus_3 }}, FY {{ fy_minus_2 }}, FY {{ fy_minus_1 }})</li>
+  <li>CA-issued Turnover Certificate</li>
+  <li>GST Registration Certificate</li>
+  <li>PAN Card</li>
+  <li>EPF and ESI Registration Certificates</li>
+  <li>Completion Certificates for similar works ({{ bidder.num_completion_certs }} nos.)</li>
+  <li>ISO 9001:{{ bidder.iso_version }} Certificate</li>
+  <li>EMD Bank Guarantee</li>
+  <li>Tender Acceptance Letter</li>
+  <li>Integrity Pact (signed)</li>
+  <li>CPWD Class {{ bidder.cpwd_class }} Enlistment Certificate</li>
+</ol>
+
+<p>We remain committed to executing the work to the entire satisfaction of {{ tender.procuring_authority_short }}, in accordance with the technical specifications and within the stipulated time frame.</p>
+
+<p>Thanking you,</p>
+
+<p>Yours faithfully,<br>
+For <b>{{ bidder.name }}</b></p>
+
+<div class="signature-block">
+  <div>
+    <div class="signature-line">
+      ({{ bidder.authorised_signatory }})<br>
+      {{ bidder.signatory_designation }}<br>
+      Authorised Signatory
+    </div>
+  </div>
+  <div class="stamp-area">
+    Company<br>Seal
+  </div>
+</div>
+
+</body>
+</html>

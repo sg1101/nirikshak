@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="static/styles.css">
+<title>PAN Card — {{ bidder.name }}</title>
+</head>
+<body class="sans">
+
+<div style="text-align: center; margin-top: 60px;">
+  <div style="font-size: 12pt; margin-bottom: 8px;">Permanent Account Number Card (Photocopy)</div>
+  <div style="font-size: 9pt; color: #666; margin-bottom: 30px;">Issued by Income Tax Department, Government of India</div>
+</div>
+
+<div class="id-card">
+<div class="header">
+  आयकर विभाग · INCOME TAX DEPARTMENT<br>
+  <span style="font-size: 9pt; font-weight: normal;">भारत सरकार · GOVT. OF INDIA</span>
+</div>
+
+<table style="width: 100%; font-size: 9pt; margin-top: 8px;">
+  <tr>
+    <td style="width: 65%;">
+      <div style="margin-bottom: 4px;">Name<br><b style="font-size: 10pt;">{{ bidder.name | upper }}</b></div>
+      <div style="margin-top: 8px;">Date of Incorporation / Formation<br><b style="font-size: 10pt;">{{ bidder.date_of_incorporation }}</b></div>
+      <div style="margin-top: 8px;">Permanent Account Number (PAN)<br>
+        <span style="font-size: 14pt; font-weight: bold; letter-spacing: 2px; font-family: 'Courier New', monospace;">{{ bidder.pan }}</span>
+      </div>
+    </td>
+    <td style="width: 35%; vertical-align: top; text-align: center;">
+      <div style="width: 80px; height: 80px; border: 1px solid #888; margin: 0 auto; background: #f0f0f0; padding-top: 28px; font-size: 8pt; color: #888;">
+        Company<br>Logo
+      </div>
+      <div style="margin-top: 8px;">
+        <div style="height: 25px; border-bottom: 1px solid #555; margin-bottom: 2px;"></div>
+        <div style="font-size: 7pt;">Authorised Signatory</div>
+      </div>
+    </td>
+  </tr>
+</table>
+</div>
+
+<div style="margin-top: 60px; padding: 16px; border: 1px solid #ccc; background: #fafafa; font-size: 9pt;">
+<b>Note for tender evaluation:</b> This is a clear photocopy / scan of the original PAN card issued by the Income Tax Department. The PAN can be independently verified through the e-Verify service on the Income Tax Department portal (incometaxindia.gov.in) or via the NSDL PAN verification API.
+</div>
+
+</body>
+</html>

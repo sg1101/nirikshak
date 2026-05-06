@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="static/styles.css">
+<title>GST Registration — {{ bidder.name }}</title>
+</head>
+<body class="sans">
+
+<div class="letterhead-govt">
+  <div class="seal">भारत सरकार · GOVERNMENT OF INDIA</div>
+  <h1>Goods and Services Tax</h1>
+  <div class="subhead">Form GST REG-06 — Registration Certificate</div>
+  <div class="subhead" style="font-size: 9pt; margin-top: 4px;">[See Rule 10(1)]</div>
+</div>
+
+<table class="formal" style="margin-top: 16px;">
+  <tr><td style="width: 35%;"><b>Registration Number (GSTIN)</b></td><td style="font-family: 'Courier New', monospace; font-size: 14pt;"><b>{{ bidder.gstin }}</b></td></tr>
+  <tr><td><b>Legal Name</b></td><td>{{ bidder.name | upper }}</td></tr>
+  <tr><td><b>Trade Name (if any)</b></td><td>{{ bidder.trade_name | default(bidder.name) | upper }}</td></tr>
+  <tr><td><b>Constitution of Business</b></td><td>{{ bidder.entity_type }}</td></tr>
+  <tr><td><b>Address of Principal Place of Business</b></td><td>{{ bidder.address }}</td></tr>
+  <tr><td><b>Date of Liability</b></td><td>{{ bidder.gst_date_of_liability }}</td></tr>
+  <tr><td><b>Period of Validity</b></td><td>From: {{ bidder.gst_valid_from }} &nbsp;&nbsp; To: <b>NA</b></td></tr>
+  <tr><td><b>Type of Registration</b></td><td>Regular</td></tr>
+  <tr><td><b>Particulars of Approving Authority</b></td><td>
+    Centre Jurisdiction: {{ bidder.gst_centre }}<br>
+    State Jurisdiction: {{ bidder.gst_state_jur }}
+  </td></tr>
+</table>
+
+<p style="margin-top: 20px;"><b>Details of the Approving Authority:</b></p>
+
+<table class="formal">
+  <tr><td style="width: 35%;">Signature</td><td>(Digitally signed)</td></tr>
+  <tr><td>Name</td><td>{{ gst_officer.name }}</td></tr>
+  <tr><td>Designation</td><td>Superintendent, Central Tax</td></tr>
+  <tr><td>Jurisdictional Office</td><td>{{ gst_officer.office }}</td></tr>
+</table>
+
+<div class="spacer-md"></div>
+
+<div style="display: flex; justify-content: space-between; margin-top: 20px;">
+  <div>
+    <div class="qr-placeholder"></div>
+    <div class="note-small" style="margin-top: 4px;">QR — verifiable on gst.gov.in</div>
+  </div>
+  <div style="text-align: right;">
+    <div class="note-small">Date: {{ bidder.gst_valid_from }}</div>
+    <div class="note-small">Place: {{ bidder.gst_state_jur }}</div>
+    <div style="margin-top: 30px; border-top: 1px solid #555; padding-top: 4px; width: 200px;" class="note-small">
+      Digital signature certificate
+    </div>
+  </div>
+</div>
+
+<div style="margin-top: 30px; border-top: 1px solid #888; padding-top: 8px;" class="note-small">
+Note: This is a system-generated registration certificate and does not require physical signature. The certificate is valid only when read in its entirety with the verification QR code on the GST portal.
+</div>
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+/* Base typography and page setup for all documents */
+@page {
+  size: A4;
+  margin: 18mm 20mm 20mm 20mm;
+}
+
+body {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 11pt;
+  line-height: 1.5;
+  color: #1a1a1a;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============ Letterhead variants ============ */
+.letterhead-formal {
+  border-bottom: 2px solid #1a3a6a;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.letterhead-formal h1 {
+  margin: 0;
+  font-size: 18pt;
+  color: #1a3a6a;
+  letter-spacing: 0.5px;
+}
+.letterhead-formal .tagline {
+  font-size: 9pt;
+  color: #666;
+  margin-top: 4px;
+  font-style: italic;
+}
+.letterhead-formal .address-line {
+  font-size: 9pt;
+  color: #444;
+  margin-top: 6px;
+}
+
+.letterhead-govt {
+  border-bottom: 3px double #000;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.letterhead-govt .seal {
+  font-size: 10pt;
+  letter-spacing: 1px;
+  color: #5a3a1a;
+  margin-bottom: 4px;
+}
+.letterhead-govt h1 {
+  margin: 0;
+  font-size: 16pt;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.letterhead-govt .subhead {
+  font-size: 10pt;
+  margin-top: 2px;
+}
+
+/* ============ Document body styles ============ */
+.doc-title {
+  text-align: center;
+  font-size: 14pt;
+  font-weight: bold;
+  margin: 24px 0 18px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: underline;
+}
+.doc-subtitle {
+  text-align: center;
+  font-size: 11pt;
+  margin: -10px 0 16px 0;
+  color: #444;
+}
+
+.ref-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10pt;
+  margin-bottom: 16px;
+}
+
+/* ============ Tables ============ */
+table.formal {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 10pt;
+}
+table.formal th, table.formal td {
+  border: 1px solid #333;
+  padding: 6px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+table.formal th {
+  background-color: #e8eef5;
+  font-weight: bold;
+}
+
+table.financial {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  font-size: 10pt;
+}
+table.financial th, table.financial td {
+  border-bottom: 1px solid #999;
+  padding: 5px 8px;
+}
+table.financial th {
+  border-bottom: 2px solid #000;
+  text-align: left;
+}
+table.financial td.amount {
+  text-align: right;
+  font-family: 'Courier New', monospace;
+}
+table.financial tr.total {
+  font-weight: bold;
+  border-top: 2px solid #000;
+}
+
+/* ============ Signature block ============ */
+.signature-block {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+.signature-line {
+  width: 200px;
+  border-top: 1px solid #000;
+  padding-top: 4px;
+  font-size: 9pt;
+  text-align: center;
+}
+.stamp-area {
+  width: 100px;
+  height: 80px;
+  border: 1px dashed #888;
+  text-align: center;
+  font-size: 8pt;
+  color: #888;
+  padding-top: 30px;
+}
+
+/* ============ Certificate styles ============ */
+.cert-border {
+  border: 4px double #1a3a6a;
+  padding: 30px 25px;
+  margin: 10px 0;
+  background: #fdfdfd;
+}
+.cert-decorative {
+  border: 6px solid #b8860b;
+  padding: 20px;
+  margin: 10px 0;
+}
+.cert-decorative .inner-border {
+  border: 1px solid #b8860b;
+  padding: 25px;
+}
+.cert-title-large {
+  text-align: center;
+  font-size: 24pt;
+  font-weight: bold;
+  margin: 20px 0;
+  letter-spacing: 2px;
+  color: #1a3a6a;
+  font-family: 'Georgia', serif;
+}
+
+/* ============ ID card style (for PAN) ============ */
+.id-card {
+  width: 320px;
+  height: 200px;
+  border: 1px solid #555;
+  padding: 12px;
+  background: linear-gradient(135deg, #f5f0e8 0%, #ebe3d3 100%);
+  margin: 40px auto;
+  font-size: 10pt;
+}
+.id-card .header {
+  text-align: center;
+  font-weight: bold;
+  color: #1a3a6a;
+  font-size: 11pt;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #888;
+  padding-bottom: 4px;
+}
+
+/* ============ Misc ============ */
+.note-small {
+  font-size: 9pt;
+  color: #555;
+  font-style: italic;
+}
+.bold { font-weight: bold; }
+.center { text-align: center; }
+.right { text-align: right; }
+.spacer-md { height: 20px; }
+.spacer-lg { height: 40px; }
+
+.qr-placeholder {
+  width: 80px;
+  height: 80px;
+  border: 1px solid #555;
+  background: repeating-linear-gradient(45deg, #000 0 4px, #fff 4px 8px);
+  display: inline-block;
+}
+
+.barcode-placeholder {
+  width: 200px;
+  height: 30px;
+  background: repeating-linear-gradient(90deg, #000 0 2px, #fff 2px 5px, #000 5px 6px, #fff 6px 9px);
+  display: inline-block;
+}
+
+/* Sans-serif variant for some documents */
+.sans {
+  font-family: 'Arial', 'Helvetica', sans-serif;
+}

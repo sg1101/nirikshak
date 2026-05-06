@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="static/styles.css">
+<title>Completion Certificate — {{ project.short_name }}</title>
+</head>
+<body>
+
+<div class="letterhead-govt">
+  <div class="seal">{{ project.issuing_authority_seal }}</div>
+  <h1>{{ project.issuing_authority }}</h1>
+  <div class="subhead">{{ project.issuing_office }}</div>
+  <div class="subhead">{{ project.issuing_address }}</div>
+</div>
+
+<div class="ref-line">
+  <div>No: {{ project.cert_ref_number }}</div>
+  <div>Date: {{ project.cert_issue_date_long }}</div>
+</div>
+
+<div class="doc-title">Certificate of Satisfactory Completion of Work</div>
+
+<p>This is to certify that <b>M/s {{ bidder.name }}</b>, having registered office at {{ bidder.address }}, PAN <b>{{ bidder.pan }}</b>, was awarded the work of:</p>
+
+<div style="border-left: 3px solid #1a3a6a; padding: 10px 14px; margin: 14px 0; background-color: #f5f8fc;">
+  <p style="margin: 0;"><b>"{{ project.work_description }}"</b></p>
+</div>
+
+<p>vide Work Order / Agreement No. <b>{{ project.work_order_number }}</b> dated <b>{{ project.work_order_date_long }}</b>, issued by the {{ project.client_office }}.</p>
+
+<p>The relevant particulars of the work executed are as follows:</p>
+
+<table class="formal">
+  <tr><td style="width: 40%;"><b>Name of Work</b></td><td>{{ project.work_description }}</td></tr>
+  <tr><td><b>Location of Work</b></td><td>{{ project.location }}</td></tr>
+  <tr><td><b>Client / Awarding Authority</b></td><td>{{ project.client_office }}</td></tr>
+  <tr><td><b>Awarded Contract Value</b></td><td style="font-family: 'Courier New', monospace;"><b>₹ {{ project.contract_value_formatted }}</b><br>({{ project.contract_value_words }} only)</td></tr>
+  <tr><td><b>Final Executed Value</b></td><td style="font-family: 'Courier New', monospace;"><b>₹ {{ project.executed_value_formatted }}</b><br>({{ project.executed_value_words }} only)</td></tr>
+  <tr><td><b>Date of Commencement</b></td><td>{{ project.start_date_long }}</td></tr>
+  <tr><td><b>Stipulated Date of Completion</b></td><td>{{ project.stipulated_completion_long }}</td></tr>
+  <tr><td><b>Actual Date of Completion</b></td><td><b>{{ project.actual_completion_long }}</b></td></tr>
+  <tr><td><b>Nature / Scope of Work</b></td><td>{{ project.scope_summary }}</td></tr>
+  {% if project.includes_components %}
+  <tr><td><b>Components / Sub-works</b></td><td>
+    <ul style="margin: 0; padding-left: 18px;">
+    {% for component in project.includes_components %}
+      <li>{{ component }}</li>
+    {% endfor %}
+    </ul>
+  </td></tr>
+  {% endif %}
+  <tr><td><b>Quality of Work</b></td><td><b>{{ project.quality_grade }}</b></td></tr>
+  {% if project.penalty_levied %}
+  <tr><td><b>Liquidated Damages / Penalty</b></td><td>{{ project.penalty_levied }}</td></tr>
+  {% else %}
+  <tr><td><b>Liquidated Damages / Penalty</b></td><td>Nil</td></tr>
+  {% endif %}
+</table>
+
+<p style="margin-top: 18px;">The work has been executed by the contractor in accordance with the specifications, drawings, and conditions of the contract. The work was completed {{ project.completion_remark }}, and the quality of execution is reported to be <b>{{ project.quality_grade | lower }}</b>. There are no pending dues or litigation between the contractor and this office in respect of the said work.</p>
+
+<p>This certificate is issued at the specific request of the contractor for use in tender submissions and similar professional purposes. It does not give rise to any independent obligation on the part of this office.</p>
+
+<div class="signature-block">
+  <div>
+    <div class="signature-line" style="width: 240px;">
+      <b>{{ project.signing_officer_name }}</b><br>
+      {{ project.signing_officer_designation }}<br>
+      {{ project.issuing_office }}<br>
+      {% if project.signing_officer_phone %}Tel: {{ project.signing_officer_phone }}{% endif %}
+    </div>
+  </div>
+  <div class="stamp-area">
+    Office<br>Seal
+  </div>
+</div>
+
+<div style="margin-top: 24px;" class="note-small">
+Place: {{ project.location }}<br>
+Date of issue: {{ project.cert_issue_date_long }}<br>
+{% if project.attestation_remark %}Note: {{ project.attestation_remark }}{% endif %}
+</div>
+
+</body>
+</html>
