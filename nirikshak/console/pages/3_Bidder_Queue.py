@@ -40,14 +40,18 @@ try:
             st.caption(f"{len(uploaded_files)} file(s) selected: {', '.join(f.name for f in uploaded_files)}")
 
         if st.button("Upload & Evaluate", type="primary", disabled=not (bidder_name and uploaded_files)):
-            with st.spinner(f"Processing {bidder_name}'s submission... (extracting evidence, running rules)"):
+            with st.spinner(f"Processing {bidder_name}'s submission — this takes 5-8 minutes (extracting evidence from {len(uploaded_files)} documents, running verdict rules)..."):
                 try:
                     files = [("files", (f.name, f.getvalue(), "application/octet-stream")) for f in uploaded_files]
-                    result = api_post(
-                        f"/api/tenders/{tender_id}/bidders/upload",
+                    import httpx
+                    r = httpx.post(
+                        f"http://localhost:8000/api/tenders/{tender_id}/bidders/upload",
                         data={"bidder_name": bidder_name},
                         files=files,
+                        timeout=900,  # 15 minutes — bidder eval is slow due to sequential LLM calls
                     )
+                    r.raise_for_status()
+                    result = r.json()
                     verdict = result["aggregate_verdict"]
                     emoji = verdict_emoji(verdict)
                     label = verdict_label(verdict)

@@ -73,8 +73,8 @@ def render_sidebar():
         st.sidebar.warning("Database not available.")
 
 
-def api_post(path: str, **kwargs) -> dict:
-    r = httpx.post(f"{API_BASE}{path}", timeout=300, **kwargs)
+def api_post(path: str, timeout: int = 600, **kwargs) -> dict:
+    r = httpx.post(f"{API_BASE}{path}", timeout=timeout, **kwargs)
     r.raise_for_status()
     return r.json()
 
