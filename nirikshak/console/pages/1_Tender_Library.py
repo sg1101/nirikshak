@@ -1,6 +1,8 @@
 """Tender Library — Upload and manage tenders."""
 
 import streamlit as st
+
+st.set_page_config(page_title="Nirikshak — Tender Library", page_icon="⚖️", layout="wide")
 from sqlmodel import select
 
 from nirikshak.console.helpers import (

@@ -34,18 +34,31 @@ def inject_global_css():
     """Inject global CSS for the entire app. Call once per page."""
     st.markdown("""
     <style>
-    /* Hide Streamlit chrome for demo */
-    #MainMenu {visibility: hidden;}
-    header {visibility: hidden;}
-    footer {visibility: hidden;}
-    .stDeployButton {display: none;}
+    /* ── Hide ALL Streamlit chrome (Issues #1, #4, #6, #7) ── */
+    header[data-testid="stHeader"] {display: none !important;}
+    [data-testid="stToolbar"] {display: none !important;}
+    [data-testid="stDeployButton"] {display: none !important;}
+    .stDeployButton {display: none !important;}
+    button[kind="header"] {display: none !important;}
+    [data-testid="baseButton-header"] {display: none !important;}
+    #MainMenu {display: none !important;}
+    footer {display: none !important;}
 
-    /* Custom font */
+    /* Hide default Streamlit sidebar nav — we use our own (Issues #1, #7) */
+    [data-testid="stSidebarNav"] {display: none !important;}
+    [data-testid="stSidebarNavItems"] {display: none !important;}
+    [data-testid="stSidebarNavSeparator"] {display: none !important;}
+
+    /* Hide sidebar collapse button — Material Icons text leak (Issue #4) */
+    [data-testid="stSidebarCollapseButton"] {display: none !important;}
+    .material-symbols-outlined {font-size: 0 !important; overflow: hidden !important;}
+
+    /* ── Custom font ── */
     html, body, [class*="css"] {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
 
-    /* Metric cards */
+    /* ── Metric cards ── */
     [data-testid="stMetric"] {
         background: white;
         border-radius: 12px;
@@ -66,38 +79,56 @@ def inject_global_css():
         color: #2C3E50 !important;
     }
 
-    /* Sidebar styling */
-    [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #1B4F72 0%, #154360 100%);
+    /* ── Sidebar styling (Issues #2, #9) ── */
+    section[data-testid="stSidebar"] {
+        background: linear-gradient(180deg, #1B4F72 0%, #154360 100%) !important;
     }
-    [data-testid="stSidebar"] * {
+    [data-testid="stSidebar"] > div:first-child {
+        background: linear-gradient(180deg, #1B4F72 0%, #154360 100%) !important;
+    }
+
+    /* Sidebar text — white for labels and markdown */
+    [data-testid="stSidebar"] label,
+    [data-testid="stSidebar"] .stMarkdown,
+    [data-testid="stSidebar"] .stMarkdown p,
+    [data-testid="stSidebar"] .stMarkdown h1,
+    [data-testid="stSidebar"] .stMarkdown h2,
+    [data-testid="stSidebar"] .stMarkdown h3,
+    [data-testid="stSidebar"] .stMarkdown span,
+    [data-testid="stSidebar"] [data-testid="stCaption"] {
         color: white !important;
     }
-    [data-testid="stSidebar"] .stSelectbox label,
-    [data-testid="stSidebar"] .stTextInput label {
-        color: rgba(255,255,255,0.7) !important;
-        font-size: 0.8rem !important;
+
+    /* Sidebar INPUTS — dark text on white background (Issue #2 fix) */
+    [data-testid="stSidebar"] input,
+    [data-testid="stSidebar"] select,
+    [data-testid="stSidebar"] [data-baseweb="select"] *,
+    [data-testid="stSidebar"] [data-baseweb="input"] input {
+        color: #2C3E50 !important;
+        background: white !important;
+        border-radius: 6px !important;
     }
+    [data-testid="stSidebar"] input::placeholder {
+        color: #95A5A6 !important;
+    }
+
     [data-testid="stSidebar"] hr {
         border-color: rgba(255,255,255,0.2) !important;
     }
-    [data-testid="stSidebar"] .stMarkdown p {
-        color: rgba(255,255,255,0.8) !important;
-    }
 
-    /* Page containers */
+    /* ── Page containers ── */
     .block-container {
-        padding-top: 2rem !important;
+        padding-top: 1rem !important;
         max-width: 1200px;
     }
 
-    /* Expander styling */
+    /* ── Expander styling ── */
     .streamlit-expanderHeader {
         font-weight: 600 !important;
         font-size: 1rem !important;
     }
 
-    /* Button styling */
+    /* ── Button styling ── */
     .stButton > button[kind="primary"] {
         background: linear-gradient(135deg, #1B4F72 0%, #2980B9 100%) !important;
         border: none !important;
@@ -106,10 +137,15 @@ def inject_global_css():
         font-weight: 600 !important;
     }
 
-    /* Dataframe styling */
+    /* ── Dataframe styling ── */
     .stDataFrame {
         border-radius: 8px;
         overflow: hidden;
+    }
+
+    /* ── Hide date input accessibility text (Issue #10) ── */
+    [data-testid="stDateInput"] p {
+        display: none;
     }
     </style>
     """, unsafe_allow_html=True)

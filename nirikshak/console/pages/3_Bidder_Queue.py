@@ -1,6 +1,8 @@
 """Bidder Queue — Upload bidder submissions and view evaluation status."""
 
 import streamlit as st
+
+st.set_page_config(page_title="Nirikshak — Bidder Queue", page_icon="⚖️", layout="wide")
 from sqlmodel import select
 
 from nirikshak.console.helpers import (

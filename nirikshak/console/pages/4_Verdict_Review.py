@@ -2,6 +2,8 @@
 
 import json
 import streamlit as st
+
+st.set_page_config(page_title="Nirikshak — Verdict Review", page_icon="⚖️", layout="wide")
 from sqlmodel import select
 
 from nirikshak.console.helpers import (

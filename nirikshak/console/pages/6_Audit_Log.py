@@ -1,6 +1,8 @@
 """Audit Log — View, verify, and replay the audit trail."""
 
 import streamlit as st
+
+st.set_page_config(page_title="Nirikshak — Audit Log", page_icon="⚖️", layout="wide")
 import pandas as pd
 from sqlmodel import select
 

@@ -1,6 +1,8 @@
 """Criteria Review — Gate 1: review and lock eligibility criteria."""
 
 import streamlit as st
+
+st.set_page_config(page_title="Nirikshak — Criteria Review", page_icon="⚖️", layout="wide")
 from sqlmodel import select
 
 from nirikshak.console.helpers import (

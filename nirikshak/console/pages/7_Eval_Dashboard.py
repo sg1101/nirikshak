@@ -1,6 +1,8 @@
 """Eval Dashboard — Three-layer accuracy and system metrics."""
 
 import streamlit as st
+
+st.set_page_config(page_title="Nirikshak — Eval Dashboard", page_icon="⚖️", layout="wide")
 from nirikshak.console.helpers import api_get, render_sidebar, verdict_emoji, verdict_label
 from nirikshak.console.theme import (
     inject_global_css, status_card, info_banner, section_header, confidence_bar,

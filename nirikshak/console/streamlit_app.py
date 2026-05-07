@@ -67,13 +67,22 @@ try:
             locked = session.exec(select(CriteriaSpec).where(CriteriaSpec.locked_at.isnot(None))).all()
             has_locked = len(locked) > 0
 
-    st.markdown(pipeline_step([
-        {"name": "1. Upload Tender", "done": has_tenders, "active": not has_tenders},
-        {"name": "2. Review Criteria", "done": has_locked, "active": has_tenders and not has_locked},
-        {"name": "3. Upload Bidders", "done": has_bidders, "active": has_locked and not has_bidders},
-        {"name": "4. Review Verdicts", "done": has_verdicts, "active": has_bidders and not has_verdicts},
-        {"name": "5. Export Report", "done": False, "active": has_verdicts},
-    ]), unsafe_allow_html=True)
+    # Pipeline visualization — native Streamlit columns (avoids HTML code block leak)
+    steps = [
+        ("1. Upload Tender", has_tenders, not has_tenders),
+        ("2. Review Criteria", has_locked, has_tenders and not has_locked),
+        ("3. Upload Bidders", has_bidders, has_locked and not has_bidders),
+        ("4. Review Verdicts", has_verdicts, has_bidders and not has_verdicts),
+        ("5. Export Report", False, has_verdicts),
+    ]
+    step_cols = st.columns(len(steps))
+    for col, (name, done, active) in zip(step_cols, steps):
+        if done:
+            col.success(name)
+        elif active:
+            col.info(name)
+        else:
+            col.markdown(f"<div style='background:#ecf0f1; color:#95A5A6; padding:10px; border-radius:8px; text-align:center; font-weight:600; font-size:0.8rem;'>{name}</div>", unsafe_allow_html=True)
 
 except Exception:
     col1, col2, col3, col4 = st.columns(4)
