@@ -6,17 +6,30 @@ from sqlmodel import select
 from nirikshak.console.helpers import (
     format_inr, get_sync_session, render_sidebar, verdict_emoji, verdict_label,
 )
+from nirikshak.console.theme import (
+    inject_global_css, verdict_pill, info_banner, section_header,
+    NAVY, DARK, SUCCESS, DANGER, WARNING, MUTED, VERDICT_COLORS,
+)
 from nirikshak.core.schemas import (
     Bidder, BidderVerdict, CriteriaSpec, Criterion, Tender, Verdict,
 )
 
-
+inject_global_css()
 render_sidebar()
-st.header("📊 Report Export")
+
+st.markdown(f"""
+<div style="display:flex; align-items:center; gap:12px; margin-bottom:20px;">
+    <span style="font-size:2rem;">📊</span>
+    <div>
+        <h1 style="margin:0; color:{DARK};">Report Export</h1>
+        <span style="color:{MUTED};">Consolidated evaluation report with digital signature</span>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 tender_id = st.session_state.get("selected_tender_id")
 if not tender_id:
-    st.warning("No tender selected. Go to **Tender Library** first.")
+    st.markdown(info_banner("No tender selected. Go to <b>Tender Library</b> first.", WARNING), unsafe_allow_html=True)
     st.stop()
 
 try:
@@ -27,15 +40,10 @@ try:
             st.stop()
 
         spec = session.exec(
-            select(CriteriaSpec)
-            .where(CriteriaSpec.tender_id == tender_id)
-            .order_by(CriteriaSpec.version.desc())
+            select(CriteriaSpec).where(CriteriaSpec.tender_id == tender_id).order_by(CriteriaSpec.version.desc())
         ).first()
 
-        bidders = session.exec(
-            select(Bidder).where(Bidder.tender_id == tender_id)
-        ).all()
-
+        bidders = session.exec(select(Bidder).where(Bidder.tender_id == tender_id)).all()
         bidder_verdicts = {}
         bidder_criterion_verdicts = {}
         for b in bidders:
@@ -44,44 +52,47 @@ try:
             vs = session.exec(select(Verdict).where(Verdict.bidder_id == b.id)).all()
             bidder_criterion_verdicts[b.id] = vs
 
-    # ── Report preview ────────────────────────────────────────────────
+    # Tender summary card
+    st.markdown(f"""
+    <div style="background:white; border-radius:12px; padding:24px; box-shadow:0 1px 3px rgba(0,0,0,0.08); margin-bottom:20px;">
+        <h3 style="color:{DARK}; margin-top:0;">Tender Summary</h3>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div><span style="color:{MUTED};">Title:</span> <strong>{tender.title}</strong></div>
+            <div><span style="color:{MUTED};">Est. Value:</span> <strong>{format_inr(tender.estimated_value)}</strong></div>
+            <div><span style="color:{MUTED};">Authority:</span> <strong>{tender.procuring_authority}</strong></div>
+            <div><span style="color:{MUTED};">Bid Date:</span> <strong>{tender.bid_submission_date}</strong></div>
+        </div>
+        {"<div style='margin-top:8px;'><span style=&quot;color:" + MUTED + "; font-size:0.8rem;&quot;>Spec Hash: <code>" + spec.content_hash[:32] + "...</code></span></div>" if spec else ""}
+    </div>
+    """, unsafe_allow_html=True)
 
-    st.subheader("Consolidated Evaluation Report")
-
-    # Tender summary
-    with st.container(border=True):
-        st.markdown("### Tender Summary")
-        col1, col2 = st.columns(2)
-        col1.markdown(f"**Title:** {tender.title}")
-        col1.markdown(f"**Authority:** {tender.procuring_authority}")
-        col2.markdown(f"**Est. Value:** {format_inr(tender.estimated_value)}")
-        col2.markdown(f"**Bid Date:** {tender.bid_submission_date}")
-        if spec:
-            st.caption(f"Criteria Spec Hash: `{spec.content_hash[:32]}...`")
-
-    st.markdown("---")
-
-    # Bidder verdicts table
-    st.markdown("### Bidder Evaluation Results")
+    # Bidder results
+    st.markdown(section_header("Bidder Evaluation Results", f"{len(bidders)} bidders evaluated"), unsafe_allow_html=True)
 
     if not bidders:
-        st.info("No bidders evaluated yet.")
+        st.markdown(info_banner("No bidders evaluated yet.", "#2980B9"), unsafe_allow_html=True)
         st.stop()
 
     for bidder in bidders:
         bv = bidder_verdicts.get(bidder.id)
         state = bv.aggregate_state.value if bv else "unknown"
-        emoji = verdict_emoji(state)
-        label = verdict_label(state)
+        color = VERDICT_COLORS.get(state, MUTED)
 
-        with st.expander(f"{emoji} **{bidder.name}** — {label}"):
+        with st.expander(f"{verdict_emoji(state)} **{bidder.name}** — {verdict_label(state)}"):
             for v in bidder_criterion_verdicts.get(bidder.id, []):
-                v_emoji = verdict_emoji(v.state.value)
-                st.markdown(f"- **{v.criterion_id}**: {v_emoji} {verdict_label(v.state.value)} — {v.reason_template[:100]}")
+                v_color = VERDICT_COLORS.get(v.state.value, MUTED)
+                st.markdown(
+                    f'<div style="padding:6px 0; border-bottom:1px solid #f0f0f0;">'
+                    f'<strong>{v.criterion_id}</strong> '
+                    f'{verdict_pill(v.state.value)} '
+                    f'<span style="color:{MUTED}; font-size:0.85rem;">— {v.reason_template[:100]}</span>'
+                    f'</div>',
+                    unsafe_allow_html=True,
+                )
 
     st.markdown("---")
 
-    # Download button
+    # Download
     import httpx
     try:
         if st.button("⬇️ Generate & Download Signed PDF Report", type="primary"):
@@ -94,7 +105,7 @@ try:
                     file_name=f"nirikshak_report_{str(tender_id)[:8]}.pdf",
                     mime="application/pdf",
                 )
-                st.success("Report generated and digitally signed. Audit log updated.")
+                st.success("Report generated and digitally signed.")
     except Exception as e:
         st.error(f"Report generation failed: {e}")
 
