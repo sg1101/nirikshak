@@ -34,7 +34,9 @@ def inject_global_css():
     """Inject global CSS for the entire app. Call once per page."""
     st.markdown("""
     <style>
-    /* ── Hide ALL Streamlit chrome (Issues #1, #4, #6, #7) ── */
+    /* ═══════════════════════════════════════════════════════════════════
+       HIDE STREAMLIT CHROME
+       ═══════════════════════════════════════════════════════════════════ */
     header[data-testid="stHeader"] {display: none !important;}
     [data-testid="stToolbar"] {display: none !important;}
     [data-testid="stDeployButton"] {display: none !important;}
@@ -43,22 +45,112 @@ def inject_global_css():
     [data-testid="baseButton-header"] {display: none !important;}
     #MainMenu {display: none !important;}
     footer {display: none !important;}
-
-    /* Hide default Streamlit sidebar nav — we use our own (Issues #1, #7) */
-    [data-testid="stSidebarNav"] {display: none !important;}
-    [data-testid="stSidebarNavItems"] {display: none !important;}
-    [data-testid="stSidebarNavSeparator"] {display: none !important;}
-
-    /* Hide sidebar collapse button — Material Icons text leak (Issue #4) */
     [data-testid="stSidebarCollapseButton"] {display: none !important;}
-    .material-symbols-outlined {font-size: 0 !important; overflow: hidden !important;}
+    [data-testid="stSidebarNav"] {display: none !important;}
 
-    /* ── Custom font ── */
+    /* ═══════════════════════════════════════════════════════════════════
+       HIDE RAW MATERIAL ICONS TEXT
+       ═══════════════════════════════════════════════════════════════════ */
+    [data-testid="stIconMaterial"] {
+        font-size: 0 !important;
+        overflow: hidden !important;
+    }
+    [data-testid="stIconMaterial"]::after {
+        content: "" !important;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       TYPOGRAPHY
+       ═══════════════════════════════════════════════════════════════════ */
     html, body, [class*="css"] {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
 
-    /* ── Metric cards ── */
+    /* ═══════════════════════════════════════════════════════════════════
+       SIDEBAR — Navy gradient, white text
+       ═══════════════════════════════════════════════════════════════════ */
+    section[data-testid="stSidebar"] {
+        background: linear-gradient(180deg, #1A3A5C 0%, #0D2B45 100%) !important;
+    }
+    section[data-testid="stSidebar"] div[data-testid="stSidebarContent"] {
+        background: transparent !important;
+    }
+
+    /* Sidebar — all text and links white */
+    section[data-testid="stSidebar"],
+    section[data-testid="stSidebar"] *:not(input):not(select):not(textarea):not([data-baseweb="input"] *):not([data-baseweb="select"] *) {
+    }
+    section[data-testid="stSidebar"] a,
+    section[data-testid="stSidebar"] label,
+    section[data-testid="stSidebar"] p,
+    section[data-testid="stSidebar"] span,
+    section[data-testid="stSidebar"] h1,
+    section[data-testid="stSidebar"] h2,
+    section[data-testid="stSidebar"] h3,
+    section[data-testid="stSidebar"] .stMarkdown,
+    section[data-testid="stSidebar"] .stMarkdown p,
+    section[data-testid="stSidebar"] .stMarkdown span,
+    section[data-testid="stSidebar"] [data-testid="stCaption"],
+    section[data-testid="stSidebar"] [data-testid="stPageLink-NavLink"] {
+        color: rgba(255, 255, 255, 0.85) !important;
+    }
+    section[data-testid="stSidebar"] a:hover {
+        color: white !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+    }
+
+    /* Sidebar — buttons */
+    section[data-testid="stSidebar"] button {
+        color: rgba(255, 255, 255, 0.85) !important;
+        border-color: rgba(255, 255, 255, 0.2) !important;
+    }
+    section[data-testid="stSidebar"] button:hover {
+        color: white !important;
+        border-color: rgba(255, 255, 255, 0.5) !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+    }
+
+    /* Sidebar — inputs: DARK TEXT on WHITE background */
+    section[data-testid="stSidebar"] input,
+    section[data-testid="stSidebar"] textarea,
+    section[data-testid="stSidebar"] [data-baseweb="input"],
+    section[data-testid="stSidebar"] [data-baseweb="input"] input,
+    section[data-testid="stSidebar"] [data-baseweb="select"],
+    section[data-testid="stSidebar"] [data-baseweb="select"] *,
+    section[data-testid="stSidebar"] [role="combobox"] {
+        color: #2C3E50 !important;
+        background-color: white !important;
+        -webkit-text-fill-color: #2C3E50 !important;
+    }
+    section[data-testid="stSidebar"] input::placeholder,
+    section[data-testid="stSidebar"] textarea::placeholder {
+        color: #95A5A6 !important;
+        -webkit-text-fill-color: #95A5A6 !important;
+    }
+
+    /* Sidebar — separators */
+    section[data-testid="stSidebar"] hr {
+        border-color: rgba(255, 255, 255, 0.12) !important;
+    }
+
+    /* Sidebar — page link active state */
+    section[data-testid="stSidebar"] [data-testid="stPageLink-NavLink"][aria-current="page"] {
+        background: rgba(255, 255, 255, 0.12) !important;
+        color: white !important;
+        font-weight: 600 !important;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       MAIN CONTENT — Clean light theme
+       ═══════════════════════════════════════════════════════════════════ */
+    .block-container {
+        padding-top: 1rem !important;
+        max-width: 1200px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       METRIC CARDS
+       ═══════════════════════════════════════════════════════════════════ */
     [data-testid="stMetric"] {
         background: white;
         border-radius: 12px;
@@ -79,72 +171,41 @@ def inject_global_css():
         color: #2C3E50 !important;
     }
 
-    /* ── Sidebar styling (Issues #2, #9) ── */
-    section[data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #1B4F72 0%, #154360 100%) !important;
-    }
-    [data-testid="stSidebar"] > div:first-child {
-        background: linear-gradient(180deg, #1B4F72 0%, #154360 100%) !important;
-    }
-
-    /* Sidebar text — white for labels and markdown */
-    [data-testid="stSidebar"] label,
-    [data-testid="stSidebar"] .stMarkdown,
-    [data-testid="stSidebar"] .stMarkdown p,
-    [data-testid="stSidebar"] .stMarkdown h1,
-    [data-testid="stSidebar"] .stMarkdown h2,
-    [data-testid="stSidebar"] .stMarkdown h3,
-    [data-testid="stSidebar"] .stMarkdown span,
-    [data-testid="stSidebar"] [data-testid="stCaption"] {
-        color: white !important;
-    }
-
-    /* Sidebar INPUTS — dark text on white background (Issue #2 fix) */
-    [data-testid="stSidebar"] input,
-    [data-testid="stSidebar"] select,
-    [data-testid="stSidebar"] [data-baseweb="select"] *,
-    [data-testid="stSidebar"] [data-baseweb="input"] input {
-        color: #2C3E50 !important;
-        background: white !important;
-        border-radius: 6px !important;
-    }
-    [data-testid="stSidebar"] input::placeholder {
-        color: #95A5A6 !important;
-    }
-
-    [data-testid="stSidebar"] hr {
-        border-color: rgba(255,255,255,0.2) !important;
-    }
-
-    /* ── Page containers ── */
-    .block-container {
-        padding-top: 1rem !important;
-        max-width: 1200px;
-    }
-
-    /* ── Expander styling ── */
-    .streamlit-expanderHeader {
-        font-weight: 600 !important;
-        font-size: 1rem !important;
-    }
-
-    /* ── Button styling ── */
+    /* ═══════════════════════════════════════════════════════════════════
+       BUTTONS
+       ═══════════════════════════════════════════════════════════════════ */
     .stButton > button[kind="primary"] {
         background: linear-gradient(135deg, #1B4F72 0%, #2980B9 100%) !important;
         border: none !important;
         border-radius: 8px !important;
         padding: 0.5rem 1.5rem !important;
         font-weight: 600 !important;
+        color: white !important;
+    }
+    .stButton > button[kind="primary"]:hover {
+        background: linear-gradient(135deg, #154360 0%, #1B6FA8 100%) !important;
     }
 
-    /* ── Dataframe styling ── */
+    /* ═══════════════════════════════════════════════════════════════════
+       EXPANDERS
+       ═══════════════════════════════════════════════════════════════════ */
+    .streamlit-expanderHeader {
+        font-weight: 600 !important;
+        font-size: 1rem !important;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       DATAFRAMES / TABLES
+       ═══════════════════════════════════════════════════════════════════ */
     .stDataFrame {
         border-radius: 8px;
         overflow: hidden;
     }
 
-    /* ── Hide date input accessibility text (Issue #10) ── */
-    [data-testid="stDateInput"] p {
+    /* ═══════════════════════════════════════════════════════════════════
+       DATE INPUT — hide accessibility text, keep label
+       ═══════════════════════════════════════════════════════════════════ */
+    [data-testid="stDateInput"] small {
         display: none;
     }
     </style>
